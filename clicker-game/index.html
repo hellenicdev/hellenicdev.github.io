@@ -1,182 +1,175 @@
 <!DOCTYPE html>
-<meta name="description" content="A simple incremental game where every click counts. Watch your score rise!"/>
-<meta name="keywords" content="HellenicDev, programming, HTML, CSS, JS, open-source, projects, web-developement, hellenic, dev, developer, game, arcade, education, clicker, click, clicks, recreation, Clicker Game"/>
-<meta name="author" content="HellenicDev"/>
-<meta name="theme-color" content="#19336e"/>
 <html lang="en">
 <head>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9FWQFZME3Z');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple incremental clicker game. Every click counts—watch your score rise and unlock upgrades!">
+    <meta name="keywords" content="HellenicDev, programming, HTML, CSS, JS, open-source, projects, web-development, clicker game, arcade, educational">
+    <meta name="author" content="HellenicDev">
+    <meta name="theme-color" content="#19336e">
     <title>Clicker Simulation Game</title>
+    
+    <!-- Google Analytics -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9FWQFZME3Z');
+    </script>
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            flex-direction: column;
+            background: linear-gradient(135deg, #19336e, #1e2a6f);
+            color: #fff;
             text-align: center;
-            position: relative;
         }
 
-        /* Button styles */
-        button {
-            font-size: 20px;
-            padding: 10px 20px;
-            cursor: pointer;
-            margin-bottom: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Disabled button style */
-        .disabled {
-            background-color: darkgray; /* Dark gray when not enough points */
-            cursor: not-allowed; /* No entry sign cursor */
-        }
-
-        /* Enabled button style */
-        .enabled {
-            background-color: #4CAF50;
-            cursor: pointer;
-        }
-
-        /* Points counter styling */
         #counter {
-            font-size: 30px;
-            margin-bottom: 40px; /* Space between points indicator and "Click me!" button */
-            position: absolute;
-            top: 100px; 
-            /* Move it 100px down from the top */
+            font-size: 3rem;
+            margin-bottom: 50px;
         }
 
-        /* Upgrade button container styling */
+        button {
+            font-size: 1.25rem;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        button.enabled {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        button.disabled {
+            background-color: #555;
+            color: #aaa;
+            cursor: not-allowed;
+        }
+
+        #clickButton {
+            font-size: 2rem;
+            background-color: #ff9800;
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            margin-bottom: 50px;
+        }
+
         #upgrades {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            position: absolute;
-            top: 70%; /* Positioned further down */
+            gap: 15px;
+            width: 250px;
         }
 
-        /* Positioning the "Click me!" button */
-        #clickButton {
-            position: absolute;
-            top: 55%; /* Center vertically */
-            left: 50%;
-            transform: translate(-50%, -50%);
+        @media (max-width: 500px) {
+            #clickButton {
+                width: 80%;
+            }
+
+            #upgrades {
+                width: 90%;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Points indicator -->
     <div id="counter">Points: 0</div>
-
-    <!-- Click me button -->
     <button id="clickButton">Click me!</button>
 
-    <!-- Upgrade buttons (initially hidden) -->
     <div id="upgrades">
-        <button id="doublePointsButton" class="disabled" onclick="purchaseUpgrade('doublePoints')">Double Points (Cost: 30)</button>
-        <button id="autoClickerButton" class="disabled" onclick="purchaseUpgrade('autoClicker')">Auto-Clicker (Cost: 80)</button>
-        <button id="bonusMultiplierButton" class="disabled" onclick="purchaseUpgrade('bonusMultiplier')">Bonus Multiplier (Cost: 200)</button>
-        <button id="instantClickButton" class="disabled" onclick="purchaseUpgrade('instantClick')">Instant Click (Cost: 400)</button>
-        <button id="triplePointsButton" class="disabled" onclick="purchaseUpgrade('triplePoints')">Triple Points (Cost: 100)</button>
+        <button id="doublePointsButton" class="disabled" onclick="purchaseUpgrade('doublePoints')">Double Points (30)</button>
+        <button id="autoClickerButton" class="disabled" onclick="purchaseUpgrade('autoClicker')">Auto-Clicker (80)</button>
+        <button id="triplePointsButton" class="disabled" onclick="purchaseUpgrade('triplePoints')">Triple Points (100)</button>
+        <button id="bonusMultiplierButton" class="disabled" onclick="purchaseUpgrade('bonusMultiplier')">Bonus Multiplier (200)</button>
+        <button id="instantClickButton" class="disabled" onclick="purchaseUpgrade('instantClick')">Instant Click (400)</button>
     </div>
 
     <script>
-        let points = 0; // Player's points
-        let clickValue = 1; // Points per click
-        let autoClickerActive = false; // Auto-clicker status
-        let instantClickActive = false; // Instant click status
-        let autoClickInterval = null; // Holds auto-clicker interval
+        let points = 0;
+        let clickValue = 1;
+        let autoClickActive = false;
+        let instantClickActive = false;
+        let autoClickInterval = null;
+        let instantClickInterval = null;
+
         const upgrades = {
-            doublePoints: { cost: 30, purchased: false },
-            autoClicker: { cost: 80, purchased: false },
-            bonusMultiplier: { cost: 200, purchased: false },
-            instantClick: { cost: 400, purchased: false },
-            triplePoints: { cost: 100, purchased: false },
+            doublePoints: { cost: 30, purchased: false, effect: () => clickValue *= 2 },
+            triplePoints: { cost: 100, purchased: false, effect: () => clickValue *= 3 },
+            bonusMultiplier: { cost: 200, purchased: false, effect: () => clickValue *= 3 },
+            autoClicker: { cost: 80, purchased: false, effect: () => startAutoClicker() },
+            instantClick: { cost: 400, purchased: false, effect: () => startInstantClick() },
         };
 
-        const clickButton = document.getElementById("clickButton");
-        const counterDiv = document.getElementById("counter");
+        const counterDiv = document.getElementById('counter');
+        const clickButton = document.getElementById('clickButton');
 
-        // Update the points display
         function updateCounter() {
             counterDiv.textContent = `Points: ${points}`;
-            checkUpgrades(); // Check which upgrades can be unlocked based on points
+            checkUpgrades();
         }
 
-        // Handle the "Click me!" button click
-        clickButton.addEventListener("click", function() {
+        clickButton.addEventListener('click', () => {
             points += clickValue;
             updateCounter();
         });
 
-        // Purchase an upgrade
-        function purchaseUpgrade(upgrade) {
-            if (upgrades[upgrade].purchased) return; // Do nothing if already purchased
-
-            if (points >= upgrades[upgrade].cost) {
-                points -= upgrades[upgrade].cost; // Deduct points
-                upgrades[upgrade].purchased = true; // Mark as purchased
+        function purchaseUpgrade(name) {
+            const upgrade = upgrades[name];
+            if (!upgrade.purchased && points >= upgrade.cost) {
+                points -= upgrade.cost;
+                upgrade.purchased = true;
+                upgrade.effect();
+                document.getElementById(name + 'Button').classList.add('disabled');
+                document.getElementById(name + 'Button').classList.remove('enabled');
                 updateCounter();
-
-                if (upgrade === 'doublePoints') {
-                    clickValue *= 2; // Double the points per click
-                } else if (upgrade === 'autoClicker' && !autoClickerActive) {
-                    autoClickerActive = true;
-                    autoClickInterval = setInterval(function() {
-                        points += clickValue;
-                        updateCounter();
-                    }, 1000);
-                } else if (upgrade === 'bonusMultiplier') {
-                    clickValue *= 3; // Triple the points per click
-                } else if (upgrade === 'instantClick') {
-                    instantClickActive = true;
-                    setInterval(function() {
-                        if (instantClickActive) {
-                            points += clickValue;
-                            updateCounter();
-                        }
-                    }, 200);
-                } else if (upgrade === 'triplePoints') {
-                    clickValue *= 3; // Triple the points per click
-                }
-
-                // Hide the button after purchase
-                document.getElementById(upgrade + 'Button').style.display = 'none';
             }
         }
 
-        // Check if the player can afford any upgrades and show/hide them accordingly
         function checkUpgrades() {
-            for (let upgrade in upgrades) {
-                const upgradeButton = document.getElementById(upgrade + 'Button');
-                if (!upgrades[upgrade].purchased && points >= upgrades[upgrade].cost) {
-                    // Show the upgrade button only when the player has enough points
-                    upgradeButton.style.display = 'inline-block';
-                    upgradeButton.classList.remove('disabled');
-                    upgradeButton.classList.add('enabled');
-                } else if (upgrades[upgrade].purchased || points < upgrades[upgrade].cost) {
-                    // Hide the button if the upgrade has been purchased or the player can't afford it
-                    upgradeButton.style.display = 'none';
+            for (const [name, upgrade] of Object.entries(upgrades)) {
+                const button = document.getElementById(name + 'Button');
+                if (!upgrade.purchased && points >= upgrade.cost) {
+                    button.classList.add('enabled');
+                    button.classList.remove('disabled');
+                } else {
+                    button.classList.add('disabled');
+                    button.classList.remove('enabled');
                 }
             }
         }
 
-        // Periodically check for upgrades to unlock (every second)
-        setInterval(checkUpgrades, 1000); 
+        function startAutoClicker() {
+            if (!autoClickActive) {
+                autoClickActive = true;
+                autoClickInterval = setInterval(() => {
+                    points += clickValue;
+                    updateCounter();
+                }, 1000);
+            }
+        }
 
-        // Initialize the counter
+        function startInstantClick() {
+            if (!instantClickActive) {
+                instantClickActive = true;
+                instantClickInterval = setInterval(() => {
+                    points += clickValue;
+                    updateCounter();
+                }, 200);
+            }
+        }
+
         updateCounter();
     </script>
 </body>

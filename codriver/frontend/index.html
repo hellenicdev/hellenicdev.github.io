@@ -1,38 +1,217 @@
 <!DOCTYPE html>
-<meta name="description" content="An AI-powered assistant. It has games, jokes, riddles, and more."/>
-<meta name="keywords" content="HellenicDev, programming, HTML, CSS, JS, open-source, projects, web-developement, hellenic, dev, developer, AI, Artificial, Intelligence, assistant, Codriver"/>
-<meta name="author" content="HellenicDev"/>
-<meta name="theme-color" content="#19336e"/>
 <html lang="en">
 <head>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codriver - AI Assistant</title>
 
-  gtag('config', 'G-9FWQFZME3Z');
-</script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Codriver - Your AI-powered Assistant</title>
-  <link rel="stylesheet" href="style.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Global Styles */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(160deg, #1a1f3a, #252b4a);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Title */
+  .title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 25px 0 15px 0;
+    letter-spacing: 1px;
+  }
+
+  /* Chat container */
+  .chat-container {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #2c3350;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Message area */
+  .message-area {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #4e90ff transparent;
+  }
+  .message-area::-webkit-scrollbar {
+    width: 6px;
+  }
+  .message-area::-webkit-scrollbar-thumb {
+    background-color: #4e90ff;
+    border-radius: 3px;
+  }
+
+  /* Messages */
+  .message {
+    max-width: 70%;
+    padding: 14px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .message.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #4e90ff, #3a6fd1);
+    color: #fff;
+    border-bottom-right-radius: 2px;
+  }
+
+  .message.ai {
+    align-self: flex-start;
+    background: linear-gradient(135deg, #3a4160, #2c3350);
+    color: #fff;
+    border-bottom-left-radius: 2px;
+  }
+
+  /* Bubble tails */
+  .message.user::after,
+  .message.ai::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+  .message.user::after {
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent #4e90ff;
+    right: -10px;
+    bottom: 0;
+  }
+  .message.ai::after {
+    border-width: 10px 10px 10px 0;
+    border-color: transparent #3a4160 transparent transparent;
+    left: -10px;
+    bottom: 0;
+  }
+
+  .message:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Input area */
+  .input-area {
+    display: flex;
+    gap: 10px;
+    padding: 15px 20px;
+    background: #1f253d;
+    border-top: 1px solid #3a4160;
+  }
+  .input-area input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    background: #2c3350;
+    color: #fff;
+    font-size: 1rem;
+    transition: background 0.2s;
+  }
+  .input-area input:focus {
+    background: #3a4160;
+  }
+  .input-area button {
+    border: none;
+    outline: none;
+    background: #4e90ff;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 12px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .input-area button:hover {
+    background: #3a6fd1;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #aaa;
+    padding: 10px 0;
+  }
+</style>
 </head>
+
 <body>
-  <div class="fullscreen-container">
-    <div class="title">Codriver: Your AI-powered Assistant</div>
-    <div class="mic-status" id="micStatus">Listening...</div>
-    <div class="chat-container">
-      <div class="message-area" id="messageArea"></div>
-      <div class="input-area">
-        <input type="text" id="userInput" placeholder="Ask your question..." />
-        <button onclick="sendMessage()">Send</button>
-        <button onclick="startListening()"><span>🎤</span> Speak</button>
-      </div>
+  <div class="title">Codriver: Your AI Assistant</div>
+
+  <div class="chat-container">
+    <div class="message-area" id="messageArea">
+      <!-- Example messages -->
+      <div class="message ai">Hello! How can I assist you today?</div>
+      <div class="message user">Hi! Tell me a fun fact.</div>
+    </div>
+
+    <div class="input-area">
+      <input type="text" id="userInput" placeholder="Type your question..." />
+      <button onclick="sendMessage()">➤</button>
+      <button onclick="startListening()">🎤</button>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <footer>© 2025 - 2026 HellenicDev | All Rights Reserved</footer>
 
-  <p><b>© 2025 - 2026 HellenicDev <br> All Rights Reserved.</b></p>
+  <script>
+    const messageArea = document.getElementById('messageArea');
+    const userInput = document.getElementById('userInput');
+
+    function sendMessage() {
+      const text = userInput.value.trim();
+      if (!text) return;
+      const msg = document.createElement('div');
+      msg.classList.add('message', 'user');
+      msg.textContent = text;
+      messageArea.appendChild(msg);
+      userInput.value = '';
+      messageArea.scrollTop = messageArea.scrollHeight;
+
+      // Simulate AI response
+      setTimeout(() => {
+        const aiMsg = document.createElement('div');
+        aiMsg.classList.add('message', 'ai');
+        aiMsg.textContent = "This is a response to: " + text;
+        messageArea.appendChild(aiMsg);
+        messageArea.scrollTop = messageArea.scrollHeight;
+      }, 800);
+    }
+
+    function startListening() {
+      alert("Mic functionality not implemented in this demo.");
+    }
+
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+  </script>
 </body>
 </html>
