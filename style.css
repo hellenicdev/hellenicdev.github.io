@@ -160,6 +160,56 @@ iframe {
   text-transform: uppercase;
 }
 
+.announcement {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #e2e8f0;
+  padding: 16px 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  line-height: 1.6;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.announcement a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.announcement a:hover {
+  /*text-decoration: underline;*/
+  color: #7dd3fc;
+}
+
+.link {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -2px;
+  background: #38bdf8;
+  transition: width 0.3s ease;
+}
+
+.link:hover {
+  color: #7dd3fc;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
 /* SECRET7 */
 /* #plane-container {
   position: fixed;
