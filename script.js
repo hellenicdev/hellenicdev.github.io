@@ -1,86 +1,110 @@
-/* =========================
-   Google Analytics config
-   ========================= */
+// Google Analytics
 window.dataLayer = window.dataLayer || [];
-function gtag(){ dataLayer.push(arguments); }
+function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-9FWQFZME3Z');
 
+// UTM SOURCE DETECT
+const params = new URLSearchParams(window.location.search);
+const utmSource = params.get('utm_source');
+const utmMedium = params.get('utm_medium');
+const utmCampaign = params.get('utm_campaign');
 
-/* =========================
-   Logo click thank-you
-   ========================= */
-function showThankYou() {
-  const thanks = document.getElementById('hidden-thanks');
-  if (!thanks) return;
-
-  thanks.style.display = 'block';
-  thanks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+if (utmSource) {
+  console.log('UTM Source:', utmSource);
+  document.cookie = `utm_source=${utmSource}; path=/; max-age=2592000`;
 }
 
+// MailerLite Universal
+(function(w,d,e,u,f,l,n){
+  w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);};
+  l=d.createElement(e),l.async=1,l.src=u,
+  n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);
+})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', '1922622');
 
-/* =========================
-   reCAPTCHA callback
-   ========================= */
-function showForm() {
-  const form = document.getElementById('form-container');
-  if (!form) return;
-
-  form.style.display = 'block';
-  form.scrollIntoView({ behavior: 'smooth' });
+// YouTube lazy load
+function loadVideo(el) {
+  el.innerHTML = `<iframe loading="lazy" src="https://www.youtube.com/embed/99FexhxsXx8?autoplay=1" allowfullscreen></iframe>`;
 }
 
+// reCAPTCHA form
+function showForm(token) {
+  document.getElementById("form-container").style.display = "block";
+}
 
-/* =========================
-   Last-updated checker
-   ========================= */
-document.addEventListener('DOMContentLoaded', () => {
-  const items = document.querySelectorAll('.last-updated[data-meta]');
+// Popup ad
+window.onload = function() {
+  setTimeout(function() {
+    document.getElementById('popup-ad').style.display = 'block';
+  }, 5000);
+};
 
-  items.forEach(async el => {
-    const url = el.getAttribute('data-meta');
-    if (!url) return;
+// MailerLite success
+function ml_webform_success_33394663() {
+  var $ = ml_jQuery || jQuery;
+  $('.ml-subscribe-form-33394663 .row-success').show();
+  $('.ml-subscribe-form-33394663 .row-form').hide();
+}
+
+// MailerLite fetch
+fetch("https://assets.mailerlite.com/jsonp/1922622/forms/171163985153885945/takel")
+
+// Last updated script
+document.addEventListener("DOMContentLoaded", async () => {
+  const items = document.querySelectorAll(".last-updated");
+
+  for (const el of items) {
+    const path = el.dataset.meta;
+    if (!path) continue;
 
     try {
-      const res = await fetch(url, { cache: 'no-store' });
-      if (!res.ok) throw new Error('Fetch failed');
+      const res = await fetch(path, { cache: "no-store" });
+      if (!res.ok) throw new Error();
 
       const data = await res.json();
-      if (data.lastUpdated) {
-        el.textContent = `Last updated: ${data.lastUpdated}`;
-      } else {
-        el.textContent = 'Update info unavailable';
-      }
+      const last = new Date(data.lastUpdated);
+      const days = Math.floor(
+        (Date.now() - last) / (1000 * 60 * 60 * 24)
+      );
+
+      const text =
+        days === 0
+          ? "Updated today"
+          : days === 1
+          ? "Updated yesterday"
+          : `Updated ${days} days ago`;
+
+      el.textContent = `🕒 ${text}`;
     } catch {
-      el.textContent = 'Could not load update info';
+      el.textContent = "";
     }
-  });
+  }
 });
 
-
-/* =========================
-   Popup ad (if exists)
-   ========================= */
+// Secret typing easter egg
 (function () {
-  const popup = document.getElementById('popup-ad');
-  if (!popup) return;
+  let typed = "";
+  const secret = "HELLENICDEV";
+  const message = document.getElementById("hidden-thanks");
+  let triggered = false;
 
-  // show once per session
-  if (sessionStorage.getItem('popupShown')) return;
+  document.addEventListener("keydown", (e) => {
+    if (triggered) return;
+    if (e.key.length !== 1) return;
 
-  setTimeout(() => {
-    popup.style.display = 'block';
-    sessionStorage.setItem('popupShown', 'true');
-  }, 8000);
+    typed += e.key.toUpperCase();
+    typed = typed.slice(-secret.length);
+
+    if (typed === secret) {
+      message.style.display = "block";
+      triggered = true;
+    }
+  });
 })();
-/* HELLO42 */
 
-/* =========================
-   Easter egg (console only)
-   ========================= */
-console.log(
-  '%cHellenicDev',
-  'color:#3fa9f5;font-size:20px;font-weight:bold;'
-);
-// console.log('Build. Break. Learn. Repeat.');
-console.log("PYTHON1");
+// Logo click
+function showThankYou() {
+  const msg = document.getElementById("hidden-thanks");
+  msg.style.display = "block";
+}

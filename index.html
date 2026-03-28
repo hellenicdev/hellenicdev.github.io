@@ -13,7 +13,6 @@
 <link rel="icon" type="image/png" href="/logo.webp">
 <link rel="preload" href="/style.css" as="style">
 <link rel="preconnect" href="https://www.googletagmanager.com">
-<link rel="preconnect" href="https://assets.mailerlite.com">
 <link rel="preconnect" href="https://cdn.supportfast.ai">
 <link rel="preconnect" href="https://www.youtube.com">
 
@@ -34,33 +33,12 @@
 }
 </script>
 
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9FWQFZME3Z');
-</script>
-<script id="supportfast-script" src="https://cdn.supportfast.ai/chatbot.js" data-chatbot-id="bot-09dcew6lcq"></script>
-	<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="06e4a97f-2c34-41ed-8ab6-d53b581ff080" type="text/javascript" async></script>
+<script defer id="supportfast-script" src="https://cdn.supportfast.ai/chatbot.js" data-chatbot-id="bot-09dcew6lcq"></script>
+	<script defer id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="06e4a97f-2c34-41ed-8ab6-d53b581ff080" type="text/javascript" async></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   
 <!-- <img src="logo.webp" alt="Logo" style="width: 200px; height: 200px; border-radius: 10px;"> -->
-<img
-  src="logo.webp" 
-  class="logo"  
-  onclick="showThankYou()" 
-  style="cursor: pointer; width: 200px; height: 200px; border-radius: 10px;"
-  alt="HellenicDev logo - EASTER EGG: LUCKY5"
-  fetchpriority="high"
->
-
-<!-- ANNIVERSARY -->
-<p id="hidden-thanks" style="display:none; font-size:22px; text-align:center; margin-top:40px;">
-  Thank you for supporting HellenicDev 💙
-</p>
 
   <title>HellenicDev</title>
   
@@ -72,44 +50,14 @@
   </p>
 </div> -->
 
-<!-- UTM SOURCE DETECT SCRIPT -->
-<script>
-  const params = new URLSearchParams(window.location.search);
-
-  const utmSource = params.get('utm_source');
-  const utmMedium = params.get('utm_medium');
-  const utmCampaign = params.get('utm_campaign');
-
-  if (utmSource) {
-    console.log('UTM Source:', utmSource);
-  }
- </script>
- <script>
- document.cookie = `utm_source=${utmSource}; path=/; max-age=2592000`; // 30 days
-</script>
-<!-- SCRIPT END-->
-
-<script defer src="https://cdn.logwork.com/widget/countdown.js"></script>
-<a href="https://logwork.com/countdown-timer" class="countdown-timer" data-timezone="Europe/Athens" data-textcolor="#ffffff" data-date="2026-03-28 00:00" data-background="#19336e" data-digitscolor="#ffffff" data-unitscolor="#ffffff">Days until anniversary</a>
-
 <!-- THE LAST UPDATED SCRIPT WAS HERE -->
-
+  <link rel="preload" href="style.css" as="style">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
   <!-- reCAPTCHA -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script defer src="https://www.google.com/recaptcha/api.js"></script>
   
-  <!-- MailerLite Universal -->
-<script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '1922622');
-</script>
-<!-- End MailerLite Universal -->
-
 </head>
 <body>
   <!-- IMPORTANT!!! ANNIVERSARY VIDEO::
@@ -117,6 +65,24 @@
     <source src="video.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video> -->
+  
+<img
+  src="logo.webp" 
+  class="logo"  
+  onclick="showThankYou()" 
+  style="cursor: pointer; width: 200px; height: 200px; border-radius: 10px;"
+  alt="HellenicDev logo - EASTER EGG: LUCKY5"
+  fetchpriority="high"
+  decoding="async"
+>
+
+<!-- ANNIVERSARY -->
+<p id="hidden-thanks" style="display:none; font-size:22px; text-align:center; margin-top:40px;">
+  Thank you for supporting HellenicDev 💙
+</p>
+
+<!--<script defer src="https://cdn.logwork.com/widget/countdown.js"></script>
+<a href="https://logwork.com/countdown-timer" class="countdown-timer" data-timezone="Europe/Athens" data-textcolor="#ffffff" data-date="2027-03-28 00:00" data-background="#19336e" data-digitscolor="#ffffff" data-unitscolor="#ffffff">Days until anniversary</a>--->
   
   <h1>HellenicDev</h1>
   <h4>Hello! My name is Panos, AKA HellenicDev. I'm passionate about programming and love exploring different languages and technologies. I've created several projects so far—and many more are on the way! You can find a few of them listed below. Enjoy!</h4>
@@ -218,7 +184,7 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
  <!-- "New" tag style-->
 
   <h2> NEW! AI-powered agent </h2>
-  <iframe title="AI Agent" src="https://app.supportfast.ai/chatbot-iframe/bot-09dcew6lcq" width="100%" height="600px"></iframe>
+  <iframe loading="lazy" title="AI Agent" src="https://app.supportfast.ai/chatbot-iframe/bot-09dcew6lcq" width="100%" height="600px"></iframe>
   
 <section class="coming-next">
   <h2>What’s Coming Next</h2>
@@ -233,7 +199,10 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
   <!-- reCAPTCHA-Protected Google Form -->
   
   <h2> My Latest Upload: </h2>
-  <iframe loading="lazy" title="Latest Upload" width="560" height="315" src="https://www.youtube.com/embed/99FexhxsXx8?si=Ue_rS_2hEICWLmQR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="yt-placeholder" onclick="loadVideo(this)">
+  <img src="https://img.youtube.com/vi/99FexhxsXx8/hqdefault.jpg">
+</div>
+
   <h2>Website Building Help Form</h2>
 
   <!-- Button protected by reCAPTCHA -->
@@ -250,7 +219,8 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
 <!-- WWW -->
   <!-- Hidden form until reCAPTCHA passes -->
   <div id="form-container" style="display:none;">
-    <iframe 
+    <iframe
+	  loading="lazy"
 	  title="Website Building Help form"
       src="https://docs.google.com/forms/d/e/1FAIpQLSemiAokTJcTqz4syWyLyt1H7GWj-LJSkmVt4au51hGNwBMo8Q/viewform?embedded=true"
       width="100%"
@@ -259,12 +229,6 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
       Loading…
     </iframe>
   </div>
-
-  <script>
-    function showForm(token) {
-      document.getElementById("form-container").style.display = "block";
-    }
-  </script>
 
   <!-- Contact Icons -->
   <h2 style="text-align:center; margin-top:40px;">Contact Me</h2>
@@ -292,7 +256,6 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
    target="_blank" 
    style="margin:0 10px; display:inline-block;">
 </a>
-    </a>
   </div>
 
   <!-- Popup Ad -->
@@ -303,13 +266,6 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
     <button onclick="document.getElementById('popup-ad').style.display='none'" style="position:absolute; top:5px; right:10px; border:none; background:none; font-size:18px; cursor:pointer;">&times;</button>
   </div>
 
-  <script>
-    window.onload = function() {
-      setTimeout(function() {
-        document.getElementById('popup-ad').style.display = 'block';
-      }, 5000);
-    };
-  </script>
   <!-- START OF NEWSLETTER -->
 <style defer type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1762785");</style>
     <style defer type="text/css">
@@ -1158,23 +1114,7 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
       </div>
     </div>
 
-  
-
-  
-  
-  <script>
-    function ml_webform_success_33394663() {
-      var $ = ml_jQuery || jQuery;
-      $('.ml-subscribe-form-33394663 .row-success').show();
-      $('.ml-subscribe-form-33394663 .row-form').hide();
-    }
-      </script>
-  
-  
-      <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
-        <script>
-            fetch("https://assets.mailerlite.com/jsonp/1922622/forms/171163985153885945/takel")
-        </script>
+      <script defer src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
   <!-- END OF NEWSLETTER -->
   
   <h2> HellenicDev Updates: </h2>
@@ -1186,75 +1126,16 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
   <br>
   🎧 Stay tuned — a fresh UI experience is currently in the works.
 </p>
+
+ <p class="announcement">
+<strong>HellenicDev</strong> is celebrating its <strong> 1 year anniversary!</strong>
+</p>
 <!-- END OF UPDATES -->
 <a href="privacy-policy.html" class="link">Privacy Policy</a>
-	
-	<!-- LAST UPDATED CHECK SCRIPT -->
-<script>
-document.addEventListener("DOMContentLoaded", async () => {
-  const items = document.querySelectorAll(".last-updated");
 
-  for (const el of items) {
-    const path = el.dataset.meta;
-    if (!path) continue;
-
-    try {
-      const res = await fetch(path, { cache: "no-store" });
-      if (!res.ok) throw new Error();
-
-      const data = await res.json();
-      const last = new Date(data.lastUpdated);
-      const days = Math.floor(
-        (Date.now() - last) / (1000 * 60 * 60 * 24)
-      );
-
-      const text =
-        days === 0
-          ? "Updated today"
-          : days === 1
-          ? "Updated yesterday"
-          : `Updated ${days} days ago`;
-
-      el.textContent = `🕒 ${text}`;
-    } catch {
-      el.textContent = "";
-    }
-  }
-});
-</script>
-
-<!-- SCRIPT END -->
-<!-- ANNIVERSARY -->
-<script>
-  (function () {
-    let typed = "";
-    const secret = "HELLENICDEV";
-    const message = document.getElementById("hidden-thanks");
-    let triggered = false;
-
-    document.addEventListener("keydown", (e) => {
-      if (triggered) return;
-
-      // Ignore non-character keys
-      if (e.key.length !== 1) return;
-
-      typed += e.key.toUpperCase();
-      typed = typed.slice(-secret.length);
-
-      if (typed === secret) {
-        message.style.display = "block";
-        triggered = true;
-      }
-    });
-  })();
-</script>
-
-<script>
-  function showThankYou() {
-    const msg = document.getElementById("hidden-thanks");
-    msg.style.display = "block";
-  }
-</script>
-
+<footer style="text-align:center; padding:20px; font-size:14px; color:gray;">
+  © 2026 HellenicDev — All projects and content belong to HellenicDev.
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
