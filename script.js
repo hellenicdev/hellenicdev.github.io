@@ -1,8 +1,19 @@
-// Google Analytics
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-9FWQFZME3Z');
+setTimeout(() => {
+  // Load GA library
+  const s = document.createElement('script');
+  s.src = "https://www.googletagmanager.com/gtag/js?id=G-9FWQFZME3Z";
+  s.async = true;
+
+  // Initialize GA only after the script has loaded
+  s.onload = () => {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9FWQFZME3Z');
+  };
+
+  document.head.appendChild(s);
+}, 3000); // 3 seconds delay
 
 // UTM SOURCE DETECT
 const params = new URLSearchParams(window.location.search);
