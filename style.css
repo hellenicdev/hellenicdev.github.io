@@ -271,6 +271,74 @@ header {
   position: relative;
 }
 
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .game-list {
+    grid-template-columns: 1fr; /* one column on mobile */
+    gap: 1rem;
+  }
+
+  .game-card {
+    padding: 0.8rem;
+  }
+
+  #sideMenu {
+    width: 200px;
+    padding-top: 50px;
+  }
+
+  #menuButton {
+    font-size: 18px;
+    padding: 3px 6px;
+  }
+
+  .form-container {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .new-year-banner {
+    padding: 1rem 1.5rem;
+    margin: 1.5rem auto 2rem;
+  }
+}
+
+/* Responsive iframes */
+iframe {
+  width: 100%;
+  max-width: 100%;
+  height: auto; /* adjust height automatically */
+}
+
+/* For specific aspect ratios (like 16:9) */
+.responsive-iframe {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+}
+
+.responsive-iframe iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border: 0;
+}
+
 /* SECRET7 */
 /* #plane-container {
   position: fixed;
