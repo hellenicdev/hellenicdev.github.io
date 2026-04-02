@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="Hello! My name is Panos, AKA HellenicDev. I'm passionate about programming and love exploring different languages and technologies. I've created several projects so far—and many more are on the way! You can find a few of them listed below. Enjoy!"/>
 <meta name="keywords" content="HellenicDev, programming, HTML, CSS, JS, open-source, projects, web-developement, hellenic, dev, developer"/>
 <meta name="author" content="HellenicDev"/>
@@ -11,10 +13,12 @@
 <meta property="og:url" content="https://hellenicdev.github.io">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="/logo.webp">
-<link rel="preload" href="/style.css" as="style">
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://cdn.supportfast.ai">
 <link rel="preconnect" href="https://www.youtube.com">
+<link rel="dns-prefetch" href="//www.google.com">
+<link rel="dns-prefetch" href="//www.youtube.com">
+<link rel="dns-prefetch" href="//cdn.supportfast.ai">
 
 <script type="application/ld+json">
 {
@@ -31,42 +35,55 @@
 
 <script defer id="supportfast-script" src="https://cdn.supportfast.ai/chatbot.js" data-chatbot-id="bot-09dcew6lcq"></script>
 	<script defer id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="06e4a97f-2c34-41ed-8ab6-d53b581ff080" type="text/javascript" async></script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   
 <!-- <img src="logo.webp" alt="Logo" style="width: 200px; height: 200px; border-radius: 10px;"> -->
-
   <title>HellenicDev</title>
   
- <!-- <div class="new-year-banner">
-  <h2>🎉 Happy Easter!</h2>
+<div class="new-year-banner">
+  <h2>🐇 Happy Easter!</h2>
   <p>
     May your Easter be blessed with happy feelings and
     memories full of joy!
   </p>
-</div> -->
+</div>
 
 <!-- THE LAST UPDATED SCRIPT WAS HERE -->
   <link rel="preload" href="style.css" as="style">
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" media="print" onload="this.media='all'">
 
   <!-- reCAPTCHA -->
   <script defer src="https://www.google.com/recaptcha/api.js"></script>
   
 </head>
 <body>
+
+<div id="menuButton">➜</div>
+
+<nav id="sideMenu">
+  <a href="#about">About Me</a>
+  <a href="#projects">Projects</a>
+  <a href="#ai-agent">AI-powered agent</a>
+  <a href="#coming-next">What’s Coming Next</a>
+  <a href="#latest-upload">My Latest Upload</a>
+  <a href="#help-form">Website Building Help Form</a>
+  <a href="#contact">Contact Me</a>
+  <a href="#newsletter">Newsletter</a>
+  <a href="#updates">Updates</a>
+</nav>
+
+
   <!-- IMPORTANT!!! ANNIVERSARY VIDEO::
   <video width="640" height="360" controls>
     <source src="video.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video> -->
-  
+<header>
+<div id="about">
 <img
   src="logo.webp" 
   class="logo"  
   onclick="showThankYou()" 
-  style="cursor: pointer; width: 200px; height: 200px; border-radius: 10px;"
   alt="HellenicDev logo - EASTER EGG: LUCKY5"
   fetchpriority="high"
   decoding="async"
@@ -79,18 +96,21 @@
 
 <!--<script defer src="https://cdn.logwork.com/widget/countdown.js"></script>
 <a href="https://logwork.com/countdown-timer" class="countdown-timer" data-timezone="Europe/Athens" data-textcolor="#ffffff" data-date="2027-03-28 00:00" data-background="#19336e" data-digitscolor="#ffffff" data-unitscolor="#ffffff">Days until anniversary</a>--->
-  
+</header>  
   <h1>HellenicDev</h1>
+  <main>
   <h4>Hello! My name is Panos, AKA HellenicDev. I'm passionate about programming and love exploring different languages and technologies. I've created several projects so far—and many more are on the way! You can find a few of them listed below. Enjoy!</h4>
   <h4> Thank you for being part of HellenicDev.
 What started as a personal passion for programming has grown into something bigger thanks to everyone who visits, explores, and supports this journey.
 Here’s to learning, building, and innovating — together. 🚀</h4>
-  <h2>My Projects:</h2>
+</div>
 
-  <div class="game-list">
+ <h2 class="left-align">My Projects:</h2>
+
+  <div class="game-list" id="projects">
     <div class="game-card">
 	<span class="new-tag">REDESIGNED!</span>
-      <a href="https://hellenicdev.github.io/codriver/frontend?utm_source=hellenicdev">
+      <a href="https://hellenicdev.github.io/codriver/frontend?utm_source=hellenicdev.github.io">
         <h3>⭐ Featured • Codriver</h3>
         <p>An AI-powered assistant. It has games, jokes, riddles, and more.</p>
 		<p class="last-updated" data-meta="codriver/meta.json">
@@ -100,7 +120,7 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
     </div>
     <div class="game-card">
 	<span class="new-tag">REDESIGNED!</span>
-      <a href="https://hellenicdev.github.io/clicker-game?utm_source=hellenicdev">
+      <a href="https://hellenicdev.github.io/clicker-game?utm_source=hellenicdev.github.io">
         <h3>Clicker Game</h3>
         <p>A simple incremental game where every click counts. Watch your score rise!</p>
 		<p class="last-updated" data-meta="clicker-game/meta.json">
@@ -110,7 +130,7 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
     </div>
     <div class="game-card">
 	<!--<span class="new-tag">UPDATED!</span>-->
-      <a href="https://hellenicdev.github.io/budget-tracker?utm_source=hellenicdev">
+      <a href="https://hellenicdev.github.io/budget-tracker?utm_source=hellenicdev.github.io">
         <h3>Budget Tracker</h3>
         <p>Track your income and expenses with ease. Great for personal finance planning (data saved in browser cookies).</p>
 		<p class="last-updated" data-meta="budget-tracker/meta.json">
@@ -120,7 +140,7 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
     </div>
     <div class="game-card">
 	<!--<span class="new-tag">UPDATED!</span>-->
-      <a href="https://hellenicdev.github.io/the-quiz?utm_source=hellenicdev">
+      <a href="https://hellenicdev.github.io/the-quiz?utm_source=hellenicdev.github.io">
         <h3>The Quiz</h3>
         <p>Test your knowledge in various subjects. Fun and educational quiz app!</p>
 		<p class="last-updated" data-meta="the-quiz/meta.json">
@@ -130,7 +150,7 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
     </div>
     <div class="game-card">
 	<!--<span class="new-tag">UPDATED!</span>-->
-      <a href="https://hellenicdev.github.io/e-table?utm_source=hellenicdev">
+      <a href="https://hellenicdev.github.io/e-table?utm_source=hellenicdev.github.io">
         <h3>E-table</h3>
         <p>A mock app. Supposed to be a platform where you can reserve a table at a restaurant.</p>
 		<p class="last-updated" data-meta="e-table/meta.json">
@@ -140,7 +160,7 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
     </div>
     <div class="game-card">
 	<!--<span class="new-tag">UPDATED!</span>-->
-      <a href="https://hellenicdev.github.io/dodge-and-survive?utm_source=hellenicdev">
+      <a href="https://hellenicdev.github.io/dodge-and-survive?utm_source=hellenicdev.github.io">
         <h3>Dodge & Survive</h3>
         <p>A fast-paced arcade game where you dodge enemies and try to survive as long as possible.</p>
 		<p class="last-updated" data-meta="dodge-and-survive/meta.json">
@@ -150,7 +170,7 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
     </div>
     <div class="game-card">
 	<span class="new-tag">UPDATED!</span>
-      <a href="https://hellenicdev.github.io/the-sound-quiz?utm_source=hellenicdev">
+      <a href="https://hellenicdev.github.io/the-sound-quiz?utm_source=hellenicdev.github.io">
         <h3>The Sound Quiz</h3>
         <p>A simple quiz. You hear sounds and you have to guess them.</p>
 		<p class="last-updated" data-meta="the-sound-quiz/meta.json">
@@ -160,7 +180,7 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
     </div>
 	<div class="game-card">
 	<span class="new-tag">UPDATED!</span>
-  <a href="https://currency-converter-7fmk.onrender.com?utm_source=hellenicdev">
+  <a href="https://currency-converter-7fmk.onrender.com?utm_source=hellenicdev.github.io">
     <h3>Currency Converter</h3>
     <p>A currency converter with all major currencies.</p>
 	<p class="last-updated" data-meta="currency-converter/meta.json">
@@ -170,20 +190,23 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
 </div>
 <div class="game-card">
   <span class="new-tag">NEW!</span>
-  <a href="https://hellenicdev.github.io/pi-radio/index.html?utm_source=hellenicdev">
+  <a href="https://hellenicdev.github.io/pi-radio/index.html?utm_source=hellenicdev.github.io">
     <h3>Pi Radio</h3>
     <p>A 24/7 internet radio station hosted on a Raspberry Pi 5.</p>
   </a>
 </div>
+<div class="game-card">
+<h3> <em>More coming soon...</em></h3>
   </div>
   </div>
- <!-- "New" tag style-->
 
-  <h2> NEW! AI-powered agent </h2>
+ <!-- "New" tag style-->
+<div id="ai-agent">
+  <h2 class="left-align"> NEW! AI-powered agent </h2>
   <iframe loading="lazy" title="AI Agent" src="https://app.supportfast.ai/chatbot-iframe/bot-09dcew6lcq" width="100%" height="600px"></iframe>
-  
-<section class="coming-next">
-  <h2>What’s Coming Next</h2>
+  </div>
+<section class="coming-next" id="coming-next">
+  <h2 class="left-align">What’s Coming Next</h2>
   <ul>
     <li>🚀 New interactive projects & experiments</li>
     <li>🎨 UI and performance improvements</li>
@@ -193,11 +216,12 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
 </section>
 
   <!-- reCAPTCHA-Protected Google Form -->
-  
-  <h2> My Latest Upload: </h2>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/99FexhxsXx8?si=EECWLqH3sD-nJGhr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-  <h2>Website Building Help Form</h2>
+<div id="latest-upload">  
+  <h2 class="left-align"> My Latest Upload: </h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/99FexhxsXx8?si=EECWLqH3sD-nJGhr" title="YouTube video player" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<div id="help-form">
+  <h2 class="left-align">Website Building Help Form</h2>
 
   <!-- Button protected by reCAPTCHA -->
   <div style="text-align:center; margin-bottom:20px;">
@@ -223,43 +247,47 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
       Loading…
     </iframe>
   </div>
-
+</div>
+<div id="contact">
   <!-- Contact Icons -->
-  <h2 style="text-align:center; margin-top:40px;">Contact Me</h2>
+  <h2 class="left-align">Contact Me</h2>
   <div style="text-align:center; margin-bottom:40px;">
     <a href="mailto:ikonpanos@gmail.com" aria-label="Mail" target="_blank" style="margin:0 10px; color:#D44638; font-size:30px;">
       <i class="fa-solid fa-envelope"></i>
     </a>
-    <a href="https://www.youtube.com/@hellenicdev?sub_confirmation=1" aria-label="YouTube" target="_blank" style="margin:0 10px; color:#FF0000; font-size:30px;">
+    <a href="https://www.youtube.com/@hellenicdev?sub_confirmation=1" aria-label="YouTube" target="_blank" rel="noopener" style="margin:0 10px; color:#FF0000; font-size:30px;">
       <i class="fa-brands fa-youtube"></i>
     </a>
-    <a href="https://github.com/hellenicdev" aria-label="Github" target="_blank" style="margin:0 10px; color:#333333; font-size:30px;">
+    <a href="https://github.com/hellenicdev" aria-label="Github" target="_blank" rel="noopener" style="margin:0 10px; color:#333333; font-size:30px;">
       <i class="fa-brands fa-github"></i>
     </a>
-    <a href="https://discord.gg/tHwtmrB9xw" aria-label="Discord" target="_blank" style="margin:0 10px; color:#5865F2; font-size:30px;">
+    <a href="https://discord.gg/tHwtmrB9xw" aria-label="Discord" target="_blank" rel="noopener" style="margin:0 10px; color:#5865F2; font-size:30px;">
       <i class="fa-brands fa-discord"></i>
     </a>
-	<a href="https://reddit.com/u/hellenicdev" aria-label="Reddit" target="_blank" style="margin:0 10px; color:#FF4500; font-size:30px;">
+	<a href="https://reddit.com/u/hellenicdev" aria-label="Reddit" target="_blank" rel="noopener" style="margin:0 10px; color:#FF4500; font-size:30px;">
       <i class="fa-brands fa-reddit"></i>
     </a>
-	<a href="https://invite.viber.com/?g2=AQAgg8gST0QlllYfwbe6OjAd1xzo4ezOXxCHX4yh03u0ZSgOXVJksWXm59E6Phz2" aria-label="Viber" target="_blank" style="margin:0 10px; color:#7360F2; font-size:30px;">
+	<a href="https://invite.viber.com/?g2=AQAgg8gST0QlllYfwbe6OjAd1xzo4ezOXxCHX4yh03u0ZSgOXVJksWXm59E6Phz2" aria-label="Viber" target="_blank" rel="noopener" style="margin:0 10px; color:#7360F2; font-size:30px;">
       <i class="fa-brands fa-viber"></i>
     </a>
 <a href="https://hellenicdev.substack.com" 
    aria-label="Substack" 
-   target="_blank" 
-   style="margin:0 10px; display:inline-block;">
+   style="margin:0 10px; display:inline-block;"
+   target="_blank" rel="noopener">
 </a>
   </div>
+</div>
 
   <!-- Popup Ad -->
   <div id="popup-ad" style="display:none; position:fixed; bottom:20px; right:20px; width:300px; background:#fff; border:1px solid #000000; border-radius:8px; padding:15px; box-shadow:0 4px 12px rgba(0,0,0,0.2); font-family:sans-serif; color:black; z-index:9999;">
     <strong>Sponsored Offer - Accommodation in Corfu, Greece.</strong>
     <p>Nikoletta's Apartments. 9.6 Booking rating. Situated in Tzavros, Nikoleta's Corfu Apartment belongs to a block of houses which feature a large outdoor pool and a colorful garden full of flowers and trees. Set in a 8,000 m² area, the property offers fully equipped apartments with free WiFi access and shaded verandas overlooking the pool.</p>
-    <a href="https://www.booking.com/Share-BN5noZ?utm_source=hellenicdev" target="_blank" style="color:#007bff;">Check it out →</a>
+    <a href="https://www.booking.com/Share-BN5noZ?utm_source=hellenicdev" target="_blank" rel="noopener" style="color:#007bff;">Check it out →</a>
     <button onclick="document.getElementById('popup-ad').style.display='none'" style="position:absolute; top:5px; right:10px; border:none; background:none; font-size:18px; cursor:pointer;">&times;</button>
   </div>
-
+  
+<div id="newsletter">
+<h2 class="left-align"> Newsletter </h2>
   <!-- START OF NEWSLETTER -->
 <style defer type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1762785");</style>
     <style defer type="text/css">
@@ -1110,27 +1138,33 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
 
       <script defer src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
   <!-- END OF NEWSLETTER -->
-  
-  <h2> HellenicDev Updates: </h2>
+</div>
+<div id="updates"> 
+  <h2 class="left-align"> HellenicDev Updates: </h2>
  <p class="announcement">
   🚀 <strong>HellenicDev</strong> has launched a new project:
-  <a href="https://niobic-omari-boastingly.ngrok-free.dev/radio.mp3" target="_blank" class="link">Pi Radio</a>!
+  <a href="https://hellenicdev.github.io/pi-radio?utm_source=hellenicdev.github.io" target="_blank" class="link">Pi Radio</a>!
   <br>
   A 24/7 internet radio station powered by a Raspberry Pi 5.
   <br>
-  🎧 Stay tuned — a fresh UI experience is currently in the works.
+  🎧 A fresh UI experience has been developed.
 </p>
 
  <p class="announcement">
   🚀 <strong>HellenicDev</strong> now has uptime tracking! You can access it by clicking <a href="https://stats.uptimerobot.com/RrsSLtEzbk" target="_blank" class="link"> here</a>.
   </p>
 
+</div>
+
+</main>
 <!-- END OF UPDATES -->
+<br><br><br><br><br><br>
 <a href="privacy-policy.html" class="link">Privacy Policy</a>
 
 <footer style="text-align:center; padding:20px; font-size:14px; color:gray;">
   © 2026 HellenicDev — All projects and content belong to HellenicDev.
 </footer>
+
 <script src="script.js" defer></script>
 </body>
 </html>

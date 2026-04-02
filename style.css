@@ -13,6 +13,7 @@ body {
   width: 150px;
   height: auto;
   margin-bottom: 1.5rem;
+  cursor: pointer;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
@@ -32,10 +33,19 @@ h4 {
 }
 
 h2 {
-  margin-top: 2rem;
-  font-size: 2rem;
-  border-bottom: 2px solid #00aaff;
-  padding-bottom: 0.5rem;
+  text-align: center;       /* center the text */
+  display: inline-block;    /* only as wide as text */
+  margin: 40px auto 20px;   /* vertical spacing */
+  border-bottom: 3px solid #19336e; /* underline only under text */
+  padding-bottom: 5px;      /* spacing between text and line */
+}
+
+h2.left-align {
+  text-align: left;        /* override center */
+  display: block;          /* full width */
+  margin-left: 0;          /* align left */
+  border-bottom: 3px solid #19336e; /* underline stays */
+  padding-bottom: 5px;
 }
 
 .game-list {
@@ -208,6 +218,57 @@ iframe {
 
 .link:hover::after {
   width: 100%;
+}
+
+/* Arrow button */
+#menuButton {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 22px;
+  background: white;
+  color: black;
+  padding: 4px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Side menu */
+#sideMenu {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: white;
+  padding-top: 60px;
+  transition: left 0.3s;
+  z-index: 999;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+}
+
+#sideMenu a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+#sideMenu a:hover {
+  background: #f0f0f0;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+header {
+  text-align: center;
+  position: relative;
 }
 
 /* SECRET7 */
