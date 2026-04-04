@@ -41,7 +41,7 @@ h2 {
 }
 
 h2.left-align {
-  text-align: left;        /* override center */
+  text-align: center;        /* override center */
   display: block;          /* full width */
   margin-left: 0;          /* align left */
   border-bottom: 3px solid #19336e; /* underline stays */
@@ -233,6 +233,12 @@ iframe {
   cursor: pointer;
   z-index: 1000;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+/* arrow pointing down when active */
+#menuButton.open {
+  transform: rotate(90deg); /* rotate 90° to point down */
 }
 
 /* Side menu */
@@ -259,6 +265,18 @@ iframe {
 
 #sideMenu a:hover {
   background: #f0f0f0;
+}
+
+#updates {
+  text-align: center;
+}
+
+.announcement {
+  width: 60%;
+  margin: 15px auto;
+  padding: 15px;
+  border: 1px;
+  border-radius: 10px;
 }
 
 /* Smooth scrolling */
