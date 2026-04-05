@@ -130,3 +130,10 @@ menuButton.onclick = () => {
     sideMenu.style.left = "0px";
   }
 };
+
+  kofiWidgetOverlay.draw('hellenicdev', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Donate',
+    'floating-chat.donateButton.background-color': '#5bc0de',
+    'floating-chat.donateButton.text-color': '#323842'
+  });
