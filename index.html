@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 <meta name="description" content="Hello! My name is Panos, AKA HellenicDev. I'm passionate about programming and love exploring different languages and technologies. I've created several projects so far—and many more are on the way! You can find a few of them listed below. Enjoy!"/>
 <meta name="keywords" content="HellenicDev, programming, HTML, CSS, JS, open-source, projects, web-developement, hellenic, dev, developer"/>
 <meta name="author" content="HellenicDev"/>
@@ -279,8 +279,8 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
   <!-- Contact Icons -->
   <h2 class="left-align">Contact Me</h2>
   <div class="contacts>
-    <a href="mailto:ikonpanos@gmail.com" aria-label="Mail" target="_blank" class="contact-mail">
-      <i class="fa-solid fa-envelope" aria-label="Mail"></i>
+    <a href="mailto:ikonpanos@gmail.com" aria-label="Mail" target="_blank" rel="noopener" class="contact-mail">
+      <i class="fa-solid fa-envelope" aria-label="Mail"> </i>
     </a>
     <a href="https://www.youtube.com/@hellenicdev?sub_confirmation=1" aria-label="YouTube" target="_blank" rel="noopener" class="contact-youtube">
       <i class="fa-brands fa-youtube" aria-label="YouTube"> </i>
@@ -298,7 +298,7 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
       <i class="fa-brands fa-viber" aria-label="Viber"></i>
     </a>
   </div>
-  <iframe src="https://hellenicdev.substack.com/embed" width="480" height="320" class="contact-substack" frameborder="0" scrolling="no" loading="lazy"></iframe>
+  <iframe src="https://hellenicdev.substack.com/embed" width="480" height="320" class="contact-substack" title="Subtack" frameborder="0" scrolling="no" loading="lazy"></iframe>
 </div>
 
   <!-- Popup Ad -->
@@ -1174,7 +1174,7 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
 </p>
 
  <p class="announcement">
-  🚀 <strong>HellenicDev</strong> now has uptime tracking! You can access it by clicking <a href="https://stats.uptimerobot.com/RrsSLtEzbk" target="_blank" class="link"> here</a>.
+  🚀 <strong>HellenicDev</strong> now has <a href="https://stats.uptimerobot.com/RrsSLtEzbk" target="_blank" class="link" > Uptime tracking</a>
   </p>
 
 </div>
@@ -1190,6 +1190,15 @@ Here’s to learning, building, and innovating — together. 🚀</h4>
 
 <script src="script.js" defer></script>
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js' defer></script>
+<script>
+  kofiWidgetOverlay.draw('hellenicdev', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Donate',
+    'floating-chat.donateButton.background-color': '#5bc0de',
+    'floating-chat.donateButton.text-color': '#323842'
+  });
+
+</script>
 
 </body>
 </html>
