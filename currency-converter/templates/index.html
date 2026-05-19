@@ -1,82 +1,94 @@
 <!DOCTYPE html>
-<head>
-<meta name="description" content="A currency converter with all major currencies."/>
-<meta name="keywords" content="HellenicDev, programming, HTML, CSS, JS, open-source, projects, web-developement, hellenic, dev, developer, currency, application, converter, tool, tools, finance, economics, economy, Currency Converter"/>
-<meta name="author" content="HellenicDev"/>
-<meta name="theme-color" content="#19336e"/>
 <html lang="en">
-<meta property="og:title" content="HellenicDev">
-<meta property="og:description" content="Programming projects, experiments, and tools by HellenicDev.">
-<meta property="og:image" content="https://hellenicdev.github.io/logo.webp">
-<meta property="og:url" content="https://hellenicdev.github.io">
-<meta property="og:type" content="website">
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9FWQFZME3Z');
-</script>
+<head>
   <meta charset="UTF-8">
-  <title>Currency Converter</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A currency converter with all major currencies."/>
+  <meta name="keywords" content="HellenicDev, programming, HTML, CSS, JS, open-source, projects, web-developement, hellenic, dev, developer, currency, application, converter, tool, tools, finance, economics, economy, Currency Converter"/>
+  <meta name="author" content="HellenicDev"/>
+  <meta name="theme-color" content="#19336e"/>
+  <meta property="og:title" content="HellenicDev">
+  <meta property="og:description" content="Programming projects, experiments, and tools by HellenicDev.">
+  <meta property="og:image" content="https://hellenicdev.github.io/logo.webp">
+  <meta property="og:url" content="https://hellenicdev.github.io">
+  <meta property="og:type" content="website">
+  <title>Currency Converter</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>
+    (function() {
+      var prefs = JSON.parse(localStorage.getItem("preferences")) || { theme: "light" };
+      document.documentElement.setAttribute("data-theme", prefs.theme);
+    })();
+  </script>
 </head>
 <body>
 
-<a href="/">
-  <img src="https://hellenicdev.github.io/logo.webp" alt="Logo" class="site-logo">
-</a>
+  <header class="app-header">
+    <a href="/" class="logo-link" aria-label="Back to homepage">
+      <img src="https://hellenicdev.github.io/logo.webp" alt="HellenicDev Logo" class="site-logo">
+    </a>
+    <h1 class="app-title">Currency Converter</h1>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <span class="icon-light">☀️</span>
+      <span class="icon-dark">🌙</span>
+    </button>
+  </header>
 
-<div class="container">
-  <h1>Currency Converter</h1>
+  <main class="converter-layout">
+    <div class="card">
+      <div class="card-body">
+        <label class="input-label" for="amount">Amount</label>
+        <input id="amount" type="number" step="0.01" placeholder="Enter amount" autofocus>
 
-  <input id="amount" type="number" step="0.01" placeholder="Amount">
+        <div class="currency-row">
+          <div class="currency-col">
+            <label class="input-label" for="from">From</label>
+            <div class="flag flag-{{ from_flag }}" id="fromFlag">
+              <select id="from">
+                {% for c,n in currencies %}
+                  <option value="{{ c }}" {% if c==from_currency %}selected{% endif %}>{{ c }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
 
-  <div class="row">
-    <div class="flag flag-{{ from_flag }}" id="fromFlag">
-      <select id="from">
-        {% for c,n in currencies %}
-          <option value="{{ c }}" {% if c==from_currency %}selected{% endif %}>
-            {{ c }}
-          </option>
-        {% endfor %}
-      </select>
+          <button class="swap-btn" id="swap" aria-label="Swap currencies">⇄</button>
+
+          <div class="currency-col">
+            <label class="input-label" for="to">To</label>
+            <div class="flag flag-{{ to_flag }}" id="toFlag">
+              <select id="to">
+                {% for c,n in currencies %}
+                  <option value="{{ c }}" {% if c==to_currency %}selected{% endif %}>{{ c }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button class="convert-btn" id="convert">
+          <span class="btn-text">Convert</span>
+          <span class="btn-spinner" id="convertSpinner"></span>
+        </button>
+
+        <div class="result-area" id="resultArea">
+          <div class="result-value" id="result"></div>
+          <div class="result-rate" id="rate"></div>
+        </div>
+      </div>
     </div>
+  </main>
 
-    <button id="swap">⇄</button>
+  <footer class="app-footer">
+    <p>&copy; 2025-2026 HellenicDev — All projects and content belong to HellenicDev.</p>
+  </footer>
 
-    <div class="flag flag-{{ to_flag }}" id="toFlag">
-      <select id="to">
-        {% for c,n in currencies %}
-          <option value="{{ c }}" {% if c==to_currency %}selected{% endif %}>
-            {{ c }}
-          </option>
-        {% endfor %}
-      </select>
-    </div>
-  </div>
-
-  <button id="convert">Convert</button>
-
-  <div id="rate"></div>
-  <div id="result"></div>
-
-  <footer>© HellenicDev</footer>
-</div>
-</style>
-<style>.site-logo {
-  position: fixed;   /* stays visible at all times */
-  top: 10px;
-  left: 10px;
-  width: 60px;       /* adjust size */
-  height: auto;
-  z-index: 9999;     /* stays above everything */
-}</style>
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-<footer style="position: fixed; bottom: 0; left: 0; width: 100%; z-index: 9999; text-align: center; font-size: 14px; color: gray; background: white;
-">
-  © 2025-2026 HellenicDev — All projects and content belong to HellenicDev.
-</footer>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9FWQFZME3Z');
+  </script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
