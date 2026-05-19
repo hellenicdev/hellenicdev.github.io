@@ -25,7 +25,8 @@ h1 {
   text-align: center;
 }
 
-h4 {
+h4,
+.subtitle {
   text-align: center;
   max-width: 800px;
   font-weight: normal;

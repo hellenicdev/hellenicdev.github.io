@@ -3,82 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Page Not Found</title>
-  
-  <!-- Google Analytics -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9FWQFZME3Z');
-  </script>
+  <title>404 - Page Not Found | HellenicDev</title>
+  <meta name="description" content="This page doesn't exist on HellenicDev. Return to the homepage to explore programming projects and tools.">
+  <meta name="robots" content="noindex, follow">
+  <meta property="og:title" content="404 - Page Not Found | HellenicDev">
+  <meta property="og:description" content="This page doesn't exist on HellenicDev. Return to the homepage.">
+  <meta property="og:url" content="https://hellenicdev.github.io/404.html">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://hellenicdev.github.io/">
 
   <style>
-    /* Base styles */
-    body {
-      font-family: 'Arial', sans-serif;
-      background: #19336e;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-      padding: 20px;
-      animation: fadeIn 1s ease-out;
-    }
-
-    /* ASCII art styling */
-    pre {
-      font-family: monospace;
-      font-size: 1rem;
-      color: #38bdf8;
-      margin-bottom: 20px;
-    }
-
-    /* Message styling */
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-
-    /* Optional quote styling */
-    blockquote {
-      font-style: italic;
-      color: #a0aec0;
-      border-left: 4px solid #38bdf8;
-      padding-left: 15px;
-      margin: 20px 0;
-      font-size: 1.1rem;
-    }
-
-    /* Button styling */
-    .outline-button {
-      display: inline-block;
-      padding: 12px 24px;
-      font-family: monospace;
-      font-size: 16px;
-      color: #38bdf8;
-      border: 2px solid #38bdf8;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    .outline-button:hover {
-      background-color: #141625;
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    /* Fade-in animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    body{font-family:Arial,sans-serif;background:#19336e;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;margin:0;text-align:center;padding:20px;animation:fadeIn 1s ease-out}pre{font-family:monospace;font-size:1rem;color:#38bdf8;margin-bottom:20px}p{font-size:1.2rem;margin-bottom:30px}.outline-button{display:inline-block;padding:12px 24px;font-family:monospace;font-size:16px;color:#38bdf8;border:2px solid #38bdf8;border-radius:6px;text-decoration:none;transition:all .3s ease}.outline-button:hover{background-color:#141625;color:#fff;transform:translateY(-2px);box-shadow:0 4px 10px rgba(0,0,0,.2)}@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
 
@@ -92,13 +27,25 @@
      |_|  \___/   |_|  
   </strong></pre>
 
-  <p>This page doesn’t exist. Just like my free time.</p>
-
-  <!-- Optional quote -->
-  <!-- <blockquote>Not all those who wander are lost. <br>— J.R.R. Tolkien</blockquote> -->
+  <p>This page doesn't exist. Just like my free time.</p>
 
   <a href="https://hellenicdev.github.io/?utm_source=404" class="outline-button">
     Go back home
   </a>
+
+  <script defer>
+    setTimeout(() => {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9FWQFZME3Z';
+      s.async = true;
+      s.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9FWQFZME3Z');
+      };
+      document.head.appendChild(s);
+    }, 3000);
+  </script>
 </body>
 </html>
