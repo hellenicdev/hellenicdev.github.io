@@ -455,4 +455,38 @@ iframe {
 	margin: 0 auto;
 }
 
+/* =====================
+   Accessibility
+   ===================== */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #19336e;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 0 0 8px 8px;
+  z-index: 9999;
+  text-decoration: none;
+  font-weight: 700;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #38bdf8;
+}
+
+:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+#menuButton:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 2px;
+}
+
 /* SECRET 7 */

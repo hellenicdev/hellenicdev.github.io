@@ -167,8 +167,32 @@ const menuButton = document.getElementById("menuButton");
 const sideMenu = document.getElementById("sideMenu");
 
 if (menuButton && sideMenu) {
-  menuButton.onclick = () => {
-    sideMenu.style.left =
-      sideMenu.style.left === "0px" ? "-250px" : "0px";
-  };
+  function toggleMenu() {
+    const isOpen = sideMenu.style.left === "0px";
+    sideMenu.style.left = isOpen ? "-250px" : "0px";
+    menuButton.setAttribute("aria-expanded", !isOpen);
+    menuButton.classList.toggle("open", !isOpen);
+  }
+
+  menuButton.addEventListener("click", toggleMenu);
+
+  menuButton.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sideMenu.style.left === "0px") {
+      toggleMenu();
+      menuButton.focus();
+    }
+  });
+
+  sideMenu.addEventListener("click", (e) => {
+    if (e.target.tagName === "A" && sideMenu.style.left === "0px") {
+      toggleMenu();
+    }
+  });
 }

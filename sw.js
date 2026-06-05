@@ -1,10 +1,11 @@
-const CACHE = "hellenicdev-v1";
+const CACHE = "hellenicdev-v3";
 const STATIC_ASSETS = [
   "/",
   "/style.min.css",
   "/script.min.js",
   "/logo.webp",
   "/favicon.ico",
+  "/favicon.svg",
   "/404.html",
   "/privacy-policy.html"
 ];
@@ -33,6 +34,28 @@ self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET") return;
 
+  const url = new URL(request.url);
+
+  // Skip non-GET and non-HTTP(S) requests
+  if (!url.protocol.startsWith("http")) return;
+
+  // Network-first for HTML pages (fresh content preferred)
+  if (request.headers.get("Accept")?.includes("text/html")) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          if (response && response.status === 200) {
+            const clone = response.clone();
+            caches.open(CACHE).then((cache) => cache.put(request, clone));
+          }
+          return response;
+        })
+        .catch(() => caches.match(request).then((cached) => cached || caches.match("/offline.html")))
+    );
+    return;
+  }
+
+  // Cache-first for static assets (fonts, images, CSS, JS)
   event.respondWith(
     caches.match(request).then((cached) => {
       const fetchPromise = fetch(request).then((response) => {
