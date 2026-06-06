@@ -489,4 +489,60 @@ iframe {
   outline-offset: 2px;
 }
 
+/* =====================
+   Sticky Banner
+   ===================== */
+
+.sticky-banner {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background: #19336e;
+  color: #dbe4ff;
+  text-align: center;
+  padding: 10px 40px 10px 16px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.banner-link {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.banner-link:hover {
+  text-decoration: underline;
+}
+
+.close-banner {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #dbe4ff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  opacity: 0.7;
+  line-height: 1;
+}
+
+.close-banner:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .sticky-banner {
+    font-size: 0.75rem;
+    padding: 8px 36px 8px 12px;
+  }
+}
+
 /* SECRET 7 */
