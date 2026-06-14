@@ -371,37 +371,31 @@ iframe {
 .contact-mail {
 	margin: 10px;
 	color:#D44638;
-	font-size:30px;
 }
 
 .contact-youtube {
 	margin:0 10px;
 	color:#FF0000;
-	font-size:30px;
 }
 
 .contact-github {
 	margin:0 10px;
 	color:#333333;
-	font-size:30px;
 }
 
 .contact-discord {
 	margin:0 10px;
 	color:#5865F2;
-	font-size:30px;
 }
 
 .contact-reddit {
 	margin:0 10px;
 	color:#FF4500;
-	font-size:30px;
 }
 
 .contact-viber {
 	margin:0 10px;
 	color:#7360F2;
-	font-size:30px;
 }
 
 .contact-substack {
@@ -456,9 +450,18 @@ iframe {
 .contacts {
 	text-align:center;
 	margin-bottom:40px;
-	align-items: center;
 	margin: 0 auto;
 }
+.contacts a {
+	display:inline-flex;
+	align-items:center;
+	justify-content:center;
+	min-width:44px;
+	min-height:44px;
+	text-decoration:none;
+}
+
+/* SECRET 7 */
 
 /* =====================
    Accessibility
@@ -617,6 +620,24 @@ iframe {
     font-size: 0.75rem;
     padding: 8px 36px 8px 12px;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.maintenance-tag {
+  background: rgba(17, 17, 17, 0.75);
+}
+
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 500px;
 }
 
 /* SECRET 7 */

@@ -1,4 +1,23 @@
 // =====================
+// Service Worker registration
+// =====================
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+
+// =====================
+// Logo click handler
+// =====================
+document.addEventListener('DOMContentLoaded', () => {
+  const logo = document.querySelector('.logo');
+  if (logo) {
+    logo.addEventListener('click', showThankYou);
+  }
+});
+
+// =====================
 // Google Analytics (delayed load)
 // =====================
 setTimeout(() => {
@@ -70,15 +89,47 @@ function showForm(token) {
 
 
 // =====================
-// Popup ad (safe)
+// Popup ad (safe) — dialog with focus trap
 // =====================
 window.addEventListener("load", () => {
   const popup = document.getElementById('popup-ad');
-  if (!popup) return;
+  const closeBtn = document.getElementById('popupCloseBtn');
+  if (!popup || !closeBtn) return;
 
-  setTimeout(() => {
+  function openPopup() {
     popup.style.display = 'block';
-  }, 5000);
+    popup.setAttribute('aria-hidden', 'false');
+    closeBtn.focus();
+    // trap focus inside popup
+    popup.addEventListener('keydown', trapFocus);
+  }
+
+  function closePopup() {
+    popup.style.display = 'none';
+    popup.setAttribute('aria-hidden', 'true');
+    popup.removeEventListener('keydown', trapFocus);
+  }
+
+  function trapFocus(e) {
+    const focusable = popup.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.key === 'Tab') {
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+    if (e.key === 'Escape') closePopup();
+  }
+
+  closeBtn.addEventListener('click', closePopup);
+
+  setTimeout(openPopup, 5000);
 });
 
 
