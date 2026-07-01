@@ -102,6 +102,8 @@ h2.left-align {
 
 iframe {
   display: block;
+  width: 100%;
+  max-width: 100%;
 }
 
 .new-year-banner {
@@ -183,6 +185,8 @@ iframe {
   padding: 16px 20px;
   border-radius: 12px;
   max-width: 500px;
+  width: auto;
+  margin: 15px auto;
   line-height: 1.6;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
@@ -194,7 +198,6 @@ iframe {
 }
 
 .announcement a:hover {
-  /*text-decoration: underline;*/
   color: #7dd3fc;
 }
 
@@ -277,14 +280,6 @@ iframe {
   text-align: center;
 }
 
-.announcement {
-  width: 60%;
-  margin: 15px auto;
-  padding: 15px;
-  border: 1px;
-  border-radius: 10px;
-}
-
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -339,13 +334,6 @@ header {
   }
 }
 
-/* Responsive iframes */
-iframe {
-  width: 100%;
-  max-width: 100%;
-  height: auto; /* adjust height automatically */
-}
-
 /* For specific aspect ratios (like 16:9) */
 .responsive-iframe {
   position: relative;
@@ -380,7 +368,7 @@ iframe {
 
 .contact-github {
 	margin:0 10px;
-	color:#333333;
+	color:#e6e6e6;
 }
 
 .contact-discord {
@@ -433,7 +421,7 @@ iframe {
 	text-align:center;
 	padding:20px;
 	font-size:14px;
-	color:gray;
+	color:#999;
 }
 
 .hidden-thanks {
