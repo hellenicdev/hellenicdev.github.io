@@ -30,6 +30,7 @@
 <link rel="apple-touch-icon" href="/logo.webp">
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="https://hellenicdev.github.io">
+<link rel="preload" as="image" href="/logo.webp" fetchpriority="high">
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://cdn.supportfast.ai">
 <link rel="preconnect" href="https://www.youtube.com">
@@ -166,7 +167,6 @@
 }]
 </script>
 
-<script defer id="supportfast-script" src="https://cdn.supportfast.ai/chatbot.js" data-chatbot-id="bot-09dcew6lcq"></script>
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="06e4a97f-2c34-41ed-8ab6-d53b581ff080" type="text/javascript" async></script>
 
 <title>HellenicDev – Programming Projects, Tools & Experiments</title>
@@ -185,9 +185,6 @@ h1{font-size:3rem;margin-bottom:2rem;letter-spacing:2px;text-align:center}
 h4,.subtitle{text-align:center;max-width:800px;font-weight:400;color:#ccc;margin:10px auto}
 h2{text-align:center;display:inline-block;margin:40px auto 20px;border-bottom:3px solid #19336e;padding-bottom:5px}
 h2.left-align{display:block;margin-left:0;border-bottom:3px solid #19336e;padding-bottom:5px}
-.sticky-banner{position:sticky;top:0;z-index:500;background:#19336e;color:#dbe4ff;text-align:center;padding:10px 40px 10px 16px;font-size:.82rem;line-height:1.5;margin-bottom:1.5rem;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
-.banner-link{color:#38bdf8;text-decoration:none;font-weight:600;white-space:nowrap}
-.close-banner{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:0;border:0;color:#dbe4ff;font-size:1.1rem;cursor:pointer;padding:10px 12px;opacity:.7;line-height:1;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
 .footer{text-align:center;padding:20px;font-size:14px;color:#999}
 iframe{display:block;width:100%;max-width:100%}
 :focus-visible{outline:2px solid #38bdf8;outline-offset:2px}
@@ -204,7 +201,7 @@ iframe{display:block;width:100%;max-width:100%}
 .project-extra-wrapper{grid-column:1/-1;overflow:hidden;max-height:0}
 .project-extra-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem}
 .project-extra{opacity:0;transform:translateY(36px)}
-@media(max-width:768px){body{padding:1rem}h1{font-size:2rem}h2{font-size:1.5rem}#menuButton{font-size:18px;padding:3px 6px}#sideMenu{width:200px;padding-top:50px}.sticky-banner{font-size:.75rem;padding:8px 36px 8px 12px}.game-list{grid-template-columns:1fr;gap:1rem}}
+@media(max-width:768px){body{padding:1rem}h1{font-size:2rem}h2{font-size:1.5rem}#menuButton{font-size:18px;padding:3px 6px}#sideMenu{width:200px;padding-top:50px}.game-list{grid-template-columns:1fr;gap:1rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 <link rel="stylesheet" href="/style.min.css" media="print" onload="this.media='all';this.onload=null">
@@ -242,8 +239,6 @@ iframe{display:block;width:100%;max-width:100%}
   alt="HellenicDev logo"
   fetchpriority="high"
   decoding="async"
-  srcset="logo.webp 150w, logo.webp 300w"
-  sizes="(max-width: 768px) 150px, 150px"
 >
 
 <!-- ANNIVERSARY -->
@@ -252,11 +247,6 @@ iframe{display:block;width:100%;max-width:100%}
 </p>
 </header>  
 <main id="main-content">
-<div class="sticky-banner" id="stickyBanner" role="alert">
-  <strong>⏸️ Service Update:</strong> Uptime monitoring paused to manage free-tier usage.
-  <a href="#updates" class="banner-link">Details</a>
-  <button class="close-banner" onclick="this.parentElement.remove()" aria-label="Dismiss banner">✕</button>
-</div>
 <section id="about">
 <h1 class="left-align">HellenicDev</h1>
 <p class="left-align subtitle">Hello! My name is Panos, AKA HellenicDev. I'm passionate about programming and love exploring different languages and technologies. I've created several projects so far—and many more are on the way! You can find a few of them listed below. Enjoy!</p>
@@ -520,10 +510,16 @@ Here's to learning, building, and innovating — together. 🚀</p>
 </section>
 <br>
   <!-- reCAPTCHA-Protected Google Form -->
-<div id="latest-upload" class="responsive-iframe">
+<div id="latest-upload">
   <h2 class="left-align"> My Latest Upload:</h2>
-  
-<iframe width="560" height="315" src="https://www.youtube.com/embed/99FexhxsXx8?si=EECWLqH3sD-nJGhr" title="YouTube video player" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="yt-iframe"></iframe>
+  <div class="responsive-iframe">
+    <div id="ytPlayer" class="yt-placeholder" role="button" tabindex="0" aria-label="Play latest YouTube video">
+      <img src="https://img.youtube.com/vi/99FexhxsXx8/hqdefault.jpg" alt="YouTube video thumbnail" width="560" height="315" loading="lazy" class="yt-thumb">
+      <div class="yt-play-btn" aria-hidden="true">
+        <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.13 12.21 0 24 0 24s.13 11.79 1.55 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.87 35.79 68 24 68 24s-.13-11.79-1.55-16.26z" fill="red"/><path d="M45 24L27 14v20" fill="white"/></svg>
+      </div>
+    </div>
+  </div>
 </div>
 <br><br><br><br>
 <div id="help-form" class="content-visibility-auto">
@@ -579,11 +575,6 @@ Here's to learning, building, and innovating — together. 🚀</p>
 <div id="newsletter" class="content-visibility-auto">
 <h2 class="left-align"> Newsletter </h2>
   <!-- START OF NEWSLETTER -->
-<style media="print" onload="this.media='all'">
-@import url("https://assets.mlcdn.com/fonts.css?version=1762785");
-</style>
-<link rel="stylesheet" href="/mailerlite.css" media="print" onload="this.media='all'">
-
     <noscript><link rel="stylesheet" href="/mailerlite.css"></noscript>
       
     <div id="mlb2-33394663" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-33394663">
@@ -716,7 +707,6 @@ Here's to learning, building, and innovating — together. 🚀</p>
       </div>
     </div>
 
-      <script defer src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
   <!-- END OF NEWSLETTER -->
 </div>
 <div id="updates" class="left-align content-visibility-auto"> 
@@ -730,15 +720,11 @@ Here's to learning, building, and innovating — together. 🚀</p>
   🎧 A fresh UI experience has been developed.
 </p>
 
- <p class="announcement">
-  🚀 <strong>HellenicDev</strong> now has <a href="https://stats.uptimerobot.com/RrsSLtEzbk" target="_blank" class="link" > Uptime tracking</a>
+  <p class="announcement">
+   🚀 <strong>HellenicDev</strong> now has <a href="https://stats.uptimerobot.com/RrsSLtEzbk" target="_blank" class="link" > Uptime tracking</a>
   </p>
 
- <p class="announcement">
-  📡 <strong>Uptime monitoring paused</strong> to conserve Render free-tier instance hours (750 hrs/month limit). The system was checking services every 120–240s, accelerating quota usage. Status updates remain available in <strong>#uptime</strong>. Evaluating solutions for better reliability.
-  </p>
-
- <p class="announcement">
+  <p class="announcement">
   🚀 <strong>HellenicDev</strong> now has <a href="https://hellenicdev.printify.me" target="_blank" class="link" > Merch!</a>
 </p>
 

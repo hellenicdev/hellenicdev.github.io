@@ -84,6 +84,16 @@ h2.left-align {
   font-size: 1.1rem;
 }
 
+.game-card a[aria-disabled="true"] {
+  color: #555;
+  pointer-events: none;
+  cursor: default;
+}
+
+.game-card a[aria-disabled="true"]:hover {
+  transform: none;
+}
+
 .game-card p {
   margin-top: 0.5rem;
   font-size: 0.95rem;
@@ -431,8 +441,46 @@ header {
 	margin-top:40px;
 }
 
-.yt-iframe {
-	margin-top:60px;
+.yt-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 0;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.yt-thumb {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.yt-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  line-height: 0;
+}
+
+.yt-placeholder:hover .yt-play-btn {
+  opacity: 1;
+}
+
+.yt-placeholder:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: -3px;
+}
+
+#latest-upload {
+  margin-top: 60px;
 }
 
 .contacts {
@@ -483,55 +531,6 @@ header {
 #menuButton:focus-visible {
   outline: 3px solid #38bdf8;
   outline-offset: 2px;
-}
-
-/* =====================
-   Sticky Banner
-   ===================== */
-
-.sticky-banner {
-  position: sticky;
-  top: 0;
-  z-index: 500;
-  background: #19336e;
-  color: #dbe4ff;
-  text-align: center;
-  padding: 10px 40px 10px 16px;
-  font-size: 0.82rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-
-.banner-link {
-  color: #38bdf8;
-  text-decoration: none;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.banner-link:hover {
-  text-decoration: underline;
-}
-
-.close-banner {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #dbe4ff;
-  font-size: 1.1rem;
-  cursor: pointer;
-  padding: 2px 6px;
-  opacity: 0.7;
-  line-height: 1;
-}
-
-.close-banner:hover {
-  opacity: 1;
 }
 
 .project-toggle-item {
@@ -603,13 +602,6 @@ header {
   transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-  .sticky-banner {
-    font-size: 0.75rem;
-    padding: 8px 36px 8px 12px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -626,6 +618,10 @@ header {
 .content-visibility-auto {
   content-visibility: auto;
   contain-intrinsic-size: 500px;
+}
+
+#newsletter {
+  min-height: 400px;
 }
 
 /* SECRET 7 */

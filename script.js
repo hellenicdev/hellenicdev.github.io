@@ -49,23 +49,83 @@ if (utmSource) {
 
 
 // =====================
-// MailerLite (safe load)
+// MailerLite (deferred loading via IntersectionObserver)
 // =====================
-(function(w,d,e,u,f,l,n){
-  w[f] = w[f] || function(){ (w[f].q = w[f].q || []).push(arguments); };
-  l = d.createElement(e);
-  l.async = 1;
-  l.src = u;
-  n = d.getElementsByTagName(e)[0];
-  n.parentNode.insertBefore(l,n);
-})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+(function() {
+  function loadMailerLite() {
+    // Load MailerLite fonts CSS
+    var fontsLink = document.createElement('link');
+    fontsLink.rel = 'stylesheet';
+    fontsLink.href = 'https://assets.mlcdn.com/fonts.css?version=1762785';
+    fontsLink.media = 'print';
+    fontsLink.onload = function() { this.media = 'all'; };
+    document.head.appendChild(fontsLink);
 
-// Call only if available
-setTimeout(() => {
-  if (typeof ml === "function") {
-    ml('account', '1922622');
+    // Load mailerlite.css
+    var mlCSS = document.createElement('link');
+    mlCSS.rel = 'stylesheet';
+    mlCSS.href = '/mailerlite.css';
+    document.head.appendChild(mlCSS);
+
+    // Load MailerLite universal.js
+    (function(w,d,e,u,f,l,n){
+      w[f] = w[f] || function(){ (w[f].q = w[f].q || []).push(arguments); };
+      l = d.createElement(e);
+      l.async = 1;
+      l.src = u;
+      n = d.getElementsByTagName(e)[0];
+      n.parentNode.insertBefore(l,n);
+    })(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+
+    setTimeout(() => {
+      if (typeof ml === "function") {
+        ml('account', '1922622');
+      }
+    }, 1000);
+
+    // Load webforms.min.js
+    var mlWebforms = document.createElement('script');
+    mlWebforms.src = 'https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024';
+    mlWebforms.defer = true;
+    document.body.appendChild(mlWebforms);
   }
-}, 1000);
+
+  var newsletterSection = document.getElementById('newsletter');
+  if (newsletterSection && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          loadMailerLite();
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '200px' });
+    observer.observe(newsletterSection);
+  } else {
+    loadMailerLite();
+  }
+})();
+
+
+// =====================
+// SupportFast chatbot (deferred to idle)
+// =====================
+(function() {
+  function loadSupportFast() {
+    var s = document.createElement('script');
+    s.id = 'supportfast-script';
+    s.src = 'https://cdn.supportfast.ai/chatbot.js';
+    s.setAttribute('data-chatbot-id', 'bot-09dcew6lcq');
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadSupportFast, { timeout: 5000 });
+  } else {
+    setTimeout(loadSupportFast, 5000);
+  }
+})();
 
 
 // =====================
@@ -100,7 +160,6 @@ window.addEventListener("load", () => {
     popup.style.display = 'block';
     popup.setAttribute('aria-hidden', 'false');
     closeBtn.focus();
-    // trap focus inside popup
     popup.addEventListener('keydown', trapFocus);
   }
 
@@ -209,6 +268,43 @@ function showThankYou() {
   const msg = document.getElementById("hidden-thanks");
   if (msg) msg.style.display = "block";
 }
+
+
+// =====================
+// Banner close button
+// =====================
+document.addEventListener('DOMContentLoaded', function() {
+  var banner = document.getElementById('stickyBanner');
+  if (banner) {
+    var closeBtn = banner.querySelector('.close-banner');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        banner.remove();
+      });
+    }
+  }
+});
+
+
+// =====================
+// YouTube click-to-load
+// =====================
+(function() {
+  var ytPlayer = document.getElementById('ytPlayer');
+  if (!ytPlayer) return;
+
+  function loadYouTube() {
+    this.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/99FexhxsXx8?autoplay=1&si=EECWLqH3sD-nJGhr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="yt-iframe"></iframe>';
+  }
+
+  ytPlayer.addEventListener('click', loadYouTube);
+  ytPlayer.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      loadYouTube.call(this);
+    }
+  });
+})();
 
 
 // =====================
