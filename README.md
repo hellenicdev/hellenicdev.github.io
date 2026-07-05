@@ -1,4 +1,5 @@
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=19336e&center=true&vCenter=true&multiline=true&repeat=true&width=800&height=100&lines=HellenicDev+%20+%2D+%20+Building+%2C+%20+Dreaming%2C+%20+Leveling+%20+Up)](https://git.io/typing-svg)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/S6S31XB030)
 
 Hi there! I’m HellenicDev — an independent developer from Greece who loves building open-source projects, experimenting with web technologies, and turning creative ideas into working software.
 
