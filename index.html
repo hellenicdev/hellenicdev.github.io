@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-<meta name="description" content="Programming projects, experiments, and tools by HellenicDev. Explore interactive games, AI tools, and web apps built by Panos."/>
+<meta name="description" content="Programming projects, tools, and AI apps by HellenicDev. Explore interactive games, AI tools, and web apps built by Panos."/>
 <meta name="author" content="HellenicDev"/>
 <meta name="theme-color" content="#19336e"/>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,7 +12,7 @@
 <meta name="robots" content="index, follow">
 <meta name="googlebot" content="index, follow">
 <meta property="og:title" content="HellenicDev">
-<meta property="og:description" content="Programming projects, experiments, and tools by HellenicDev.">
+<meta property="og:description" content="Programming projects, tools, and AI apps by HellenicDev.">
 <meta property="og:image" content="https://hellenicdev.github.io/logo.webp">
 <meta property="og:image:width" content="1152">
 <meta property="og:image:height" content="1152">
@@ -22,7 +22,7 @@
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="HellenicDev">
-<meta name="twitter:description" content="Programming projects, experiments, and tools by HellenicDev.">
+<meta name="twitter:description" content="Programming projects, tools, and AI apps by HellenicDev.">
 <meta name="twitter:image" content="https://hellenicdev.github.io/logo.webp">
 <meta name="twitter:site" content="@hellenicdev">
 <meta name="twitter:creator" content="@hellenicdev">
@@ -61,7 +61,7 @@
   "@type": "WebSite",
   "name": "HellenicDev",
   "url": "https://hellenicdev.github.io",
-  "description": "Programming projects, experiments, and tools by HellenicDev.",
+  "description": "Programming projects, tools, and AI apps by HellenicDev.",
   "potentialAction": {
     "@type": "SearchAction",
     "target": "https://hellenicdev.github.io/?q={search_term_string}",
@@ -189,11 +189,11 @@ h2.left-align{display:block;margin-left:0;border-bottom:3px solid #19336e;paddin
 iframe{display:block;width:100%;max-width:100%}
 :focus-visible{outline:2px solid #38bdf8;outline-offset:2px}
 .game-list{width:100%;max-width:900px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.5rem;margin-top:2rem}
-.game-card{position:relative;background:#222;padding:1rem;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.3);text-align:center;overflow:hidden;display:flex;flex-direction:column}
-.game-card a{display:flex;flex-direction:column;flex:1;text-decoration:none;color:#00aaff;font-weight:700;font-size:1.1rem}
-.game-card p{margin-top:.5rem;font-size:.95rem;color:#ccc;flex:1}
-.maintenance-tag{position:absolute;inset:0;z-index:5;display:flex;align-items:center;justify-content:center;background:rgba(17,17,17,.75);color:#fff;font-size:.78rem;font-weight:800;text-transform:uppercase;pointer-events:auto;cursor:not-allowed;border-radius:10px}
-.new-tag{position:absolute;top:10px;left:10px;background:red;color:#fff;font-size:.75rem;font-weight:700;padding:2px 6px;border-radius:4px;z-index:10;text-transform:uppercase;letter-spacing:1px}
+.game-card{position:relative;background:#222;padding:1rem;border-radius:10px;text-align:center;display:flex;flex-direction:column;transition:transform .15s ease,background .3s ease}
+.game-card:hover{transform:scale(1.03);background:#2a2a2a}
+.game-card a{display:flex;flex-direction:column;flex:1;text-decoration:none;color:#38bdf8;font-weight:700;font-size:1.1rem}
+.game-card p{margin-top:.5rem;font-size:.85rem;color:#ccc;flex:1;line-height:1.4}
+.game-card .new-tag{display:inline-block;background:#19336e;color:#fff;font-size:.65rem;font-weight:600;padding:1px 6px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
 .project-toggle-item{grid-column:1/-1;display:flex;justify-content:center;margin-top:.5rem}
 .project-toggle{display:inline-flex;align-items:center;gap:.5rem;border:1px solid #38bdf8;background:#19336e;color:#fff;font:700 1rem/1 sans-serif;padding:.8rem 1.1rem;border-radius:8px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.3)}
 .project-toggle-arrow{transition:transform .3s ease;display:inline-block}
@@ -205,7 +205,9 @@ iframe{display:block;width:100%;max-width:100%}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 <link rel="stylesheet" href="/style.min.css" media="print" onload="this.media='all';this.onload=null">
-<noscript><link rel="stylesheet" href="/style.min.css"></noscript>
+<link rel="stylesheet" href="/css/theme.css" media="print" onload="this.media='all';this.onload=null">
+<link rel="stylesheet" href="/css/components.css" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="/style.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="stylesheet" href="/css/components.css"></noscript>
 
 <script defer src="https://www.google.com/recaptcha/api.js"></script>
 
@@ -261,7 +263,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card">
 	<!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
 	<span class="new-tag">REDESIGNED!</span>
-      <a href="https://hellenicdev.github.io/codriver/frontend?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://hellenicdev.github.io/codriver/frontend?utm_source=hellenicdev.github.io">
         <h3>⭐ Featured • Codriver</h3>
         <p>An AI-powered assistant. It has games, jokes, riddles, and more.</p>
 		<!--<p class="last-updated" data-meta="codriver/meta.json">
@@ -282,7 +284,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card">
 	<!--<span class="new-tag">UPDATED!</span>-->
 	<!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
-      <a href="https://hellenicdev.github.io/budget-tracker?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://hellenicdev.github.io/budget-tracker?utm_source=hellenicdev.github.io">
         <h3>Budget Tracker</h3>
         <p>Track your income and expenses with ease. Great for personal finance planning (data saved in browser cookies).</p>
 		<!--<p class="last-updated" data-meta="budget-tracker/meta.json">
@@ -333,7 +335,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
 	<div class="game-card">
   <!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
 	<span class="new-tag">UPDATED!</span>
-  <a href="https://currency-converter-7fmk.onrender.com?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+  <a href="https://currency-converter-7fmk.onrender.com?utm_source=hellenicdev.github.io">
     <h3>Currency Converter</h3>
     <p>A currency converter with all major currencies.</p>
 	<!--<p class="last-updated" data-meta="currency-converter/meta.json">
@@ -378,7 +380,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card project-extra">
       <!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
       <span class="new-tag">NEW!</span>
-      <a href="https://hellenicdev.github.io/cf-email-decoder/public?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://hellenicdev.github.io/cf-email-decoder/public?utm_source=hellenicdev.github.io">
         <h3>Cloudflare Email Decoder</h3>
         <p>A simple tool that decodes emails protected by Cloudflare's Zero Trust program. </p>
       </a>
@@ -387,7 +389,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card project-extra">
       <!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
       <span class="new-tag">NEW!</span>
-      <a href="https://hellenicdev.github.io/website-inliner?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://hellenicdev.github.io/website-inliner?utm_source=hellenicdev.github.io">
         <h3>Website Inliner</h3>
         <p>A simple tool that clones a website's source code.</p>
       </a>
@@ -396,7 +398,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card project-extra">
       <!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
       <span class="new-tag">NEW!</span>
-      <a href="https://hellenicdev.github.io/life-simulator/frontend?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://hellenicdev.github.io/life-simulator/frontend?utm_source=hellenicdev.github.io">
         <h3>Life Timeline Simulator</h3>
         <p>A scroll-based life simulator where you enter your habits and watch a unique timeline of your life unfold.</p>
       </a>
@@ -405,7 +407,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card project-extra">
       <!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
       <span class="new-tag">NEW!</span>
-      <a href="https://hellenicdev.github.io/pulsewire-ai?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://hellenicdev.github.io/pulsewire-ai?utm_source=hellenicdev.github.io">
         <h3>PulseWire AI</h3>
         <p>A new era of news. It fetches news from certified sites and passes them through multiple checks to make sure they are true.</p>
       </a>
@@ -414,7 +416,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card project-extra">
       <!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
       <span class="new-tag">NEW!</span>
-      <a href="https://hellenicdev.github.io/ghost-chat?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://hellenicdev.github.io/ghost-chat?utm_source=hellenicdev.github.io">
         <h3>Ghost Chat</h3>
         <p>A full-stack anonymous real-time chat app where users join or create rooms instantly with auto-generated nicknames, no sign-up, and zero data persistence.</p>
       </a>
@@ -423,7 +425,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card project-extra">
       <!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
       <span class="new-tag">NEW!</span>
-      <a href="https://hellenicdev.github.io/holodraw/client?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://hellenicdev.github.io/holodraw/client?utm_source=hellenicdev.github.io">
         <h3>HoloDraw</h3>
         <p>Draw, sketch, and brainstorm with your team in real-time. Infinite canvas, multiple tools, and multiplayer collaboration.</p>
       </a>
@@ -432,7 +434,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card project-extra">
       <!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
       <span class="new-tag">NEW!</span>
-      <a href="https://hellenicdev.github.io/anonymous-confession-wall/frontend?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://hellenicdev.github.io/anonymous-confession-wall/frontend?utm_source=hellenicdev.github.io">
         <h3>Anonymous Confession Wall</h3>
         <p>Share your secrets anonymously. No judgment. No names.</p>
       </a>
@@ -441,7 +443,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card project-extra">
       <!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
       <span class="new-tag">NEW!</span>
-      <a href="https://qoupons.github.io?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://qoupons.github.io?utm_source=hellenicdev.github.io">
         <h3>Qoupons</h3>
         <p>Verified free coupons and discount codes from top stores.</p>
       </a>
@@ -450,7 +452,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card project-extra">
       <!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
       <span class="new-tag">NEW!</span>
-      <a href="https://hellenicdev.github.io/file-transfer?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://hellenicdev.github.io/file-transfer?utm_source=hellenicdev.github.io">
         <h3>File Transfer</h3>
         <p>Temporary file sharing rooms. Upload, share, and download files securely in realtime.</p>
       </a>
@@ -459,7 +461,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <div class="game-card project-extra">
       <!-- <span class="maintenance-tag">UNDER MAINTANENCE</span> -->
       <span class="new-tag">NEW!</span>
-      <a href="https://hellenicdev.github.io/digimaster?utm_source=hellenicdev.github.io" tabindex="-1" aria-disabled="true">
+      <a href="https://hellenicdev.github.io/digimaster?utm_source=hellenicdev.github.io">
         <h3>Digimaster</h3>
         <p>A mini number guessing game. Number updates every 12 hours or when guessed correctly.</p>
       </a>
@@ -502,7 +504,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
 <section class="coming-next content-visibility-auto" id="coming-next">
   <h2 class="left-align">What’s Coming Next</h2>
   <ul>
-    <li>🚀 New interactive projects & experiments</li>
+    <li>🚀 New interactive projects & tools</li>
     <li>🎨 UI and performance improvements</li>
     <li>🛠️ More developer tools</li>
     <li>💡 Community-driven ideas</li>
@@ -551,10 +553,10 @@ Here's to learning, building, and innovating — together. 🚀</p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
     </a>
     <a href="https://discord.gg/tHwtmrB9xw" aria-label="Discord" target="_blank" rel="noopener" class="contact-discord">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill="currentColor"><path d="M20.57 5.28C18.95 4.63 17.23 4.15 15.43 3.88c-.19.36-.42.86-.57 1.26-1.9-.28-3.8-.28-5.7 0-.15-.4-.38-.9-.57-1.26-1.8.27-3.52.75-5.14 1.4C1.33 10.72.66 15.99 2.18 20.05c1.83 1.34 3.6 2.16 5.34 2.7.43-.59.81-1.22 1.14-1.87-1.12-.42-2.18-.98-3.16-1.69.27-.2.53-.41.78-.63 3.04 1.37 6.34 1.37 9.38 0 .25.22.51.43.78.63-.98.71-2.04 1.27-3.16 1.69.33.65.71 1.28 1.14 1.87 1.74-.54 3.51-1.36 5.34-2.7 1.56-4.22.51-9.52-2.01-14.77zM8.58 16.93c-1.03 0-1.87-1.01-1.87-2.24s.82-2.24 1.87-2.24c1.04 0 1.88 1.01 1.88 2.24s-.83 2.24-1.88 2.24zm7.84 0c-1.03 0-1.87-1.01-1.87-2.24s.82-2.24 1.87-2.24c1.04 0 1.88 1.01 1.88 2.24s-.83 2.24-1.88 2.24z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.028C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057c2.053 1.507 4.041 2.423 5.993 3.03a.078.078 0 00.084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.84 13.84 0 01-1.872-.892.077.077 0 01-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 01.079.01c.12.099.246.198.373.29a.077.077 0 01-.006.129 13.2 13.2 0 01-1.873.892.076.076 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028c1.961-.607 3.95-1.522 6.002-3.03a.077.077 0 00.032-.056c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.029zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.175 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
     </a>
 	<a href="https://reddit.com/u/hellenicdev" aria-label="Reddit" target="_blank" rel="noopener" class="contact-reddit">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.1 0 2.17-.18 3.17-.5l3.83 1.5-1.5-3.83C18.82 15.17 19 14.1 19 13c0-5.52-4.48-10-10-10zm0 3c.83 0 1.5.67 1.5 1.5S12.83 8 12 8s-1.5-.67-1.5-1.5S11.17 5 12 5zm-3.5 7c-.83 0-1.5-.67-1.5-1.5S7.67 9 8.5 9s1.5.67 1.5 1.5S9.33 12 8.5 12zm3.5 3.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30" aria-hidden="true" fill="currentColor"><path d="M201.5 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-132.3-41.2c-9.4 0-17.7 3.9-23.8 10-22.4-15.5-52.6-25.5-86.1-26.6l17.4-78.3 55.4 12.5c0 13.8 11.2 24.9 24.9 24.9 13.6 0 24.6-11.1 24.6-24.6 0-13.8-11.1-24.9-24.6-24.9-10.3 0-19.2 6.3-22.9 15.2l-61.7-13.9c-3.4-.8-6.9.4-9 3.1l-19.1 85.2c-33.5 1.2-63.6 11.1-86 26.6-6.1-6.1-14.3-9.9-23.8-9.9-18.5 0-33.6 15.1-33.6 33.6 0 11.4 5.7 21.5 14.4 27.4-1.1 5.9-1.7 11.9-1.7 18 0 52.6 58.3 95.2 130.1 95.2s130.1-42.6 130.1-95.2c0-6.1-.6-12.1-1.7-18 8.7-5.9 14.4-16 14.4-27.4 0-18.5-15.1-33.6-33.6-33.6zM310.1 305.5c-13.8 0-24.9-11.1-24.9-24.6 0-13.8 11.1-24.9 24.9-24.9 13.6 0 24.6 11.1 24.6 24.9 0 13.6-11.1 24.6-24.6 24.6z"/></svg>
     </a>
 	<a href="https://invite.viber.com/?g2=AQAgg8gST0QlllYfwbe6OjAd1xzo4ezOXxCHX4yh03u0ZSgOXVJksWXm59E6Phz2" aria-label="Viber" target="_blank" rel="noopener" class="contact-viber">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
