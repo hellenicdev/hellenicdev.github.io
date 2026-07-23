@@ -37,6 +37,10 @@
 <link rel="preconnect" href="https://assets.mailerlite.com">
 <link rel="preconnect" href="https://consent.cookiebot.com">
 <link rel="preconnect" href="https://www.google.com">
+<link rel="preconnect" href="https://townsquare.cauenapier.com" crossorigin />
+<link rel="stylesheet" href="https://townsquare.cauenapier.com/widget.css" media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="https://townsquare.cauenapier.com/api/sites/site_AhJUHC2I6JqmhTQA/style.css" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://townsquare.cauenapier.com/widget.css" /><link rel="stylesheet" href="https://townsquare.cauenapier.com/api/sites/site_AhJUHC2I6JqmhTQA/style.css" /></noscript>
 <link rel="dns-prefetch" href="https://www.youtube.com">
 <link rel="dns-prefetch" href="//cdn.supportfast.ai">
 <link rel="dns-prefetch" href="//assets.mailerlite.com">
@@ -731,6 +735,18 @@ Here's to learning, building, and innovating — together. 🚀</p>
 </p>
 
  </div>
+
+<div id="townsquare-root"></div>
+<script type="module" async>
+  import { mountTownSquare } from "https://townsquare.cauenapier.com/townsquare.mjs";
+  mountTownSquare(document.getElementById("townsquare-root"), {
+    serverOrigin: "https://townsquare.cauenapier.com",
+    siteKey: "site_AhJUHC2I6JqmhTQA",
+    pluginModules: [{"name":"soccer-ball","module":"/widget/plugins/soccer-ball.mjs"}],
+    theme: "host",
+    weatherConfig: {"mode":"automatic","weather":"clear","distribution":{"clear":58,"rain":17,"snow":17,"storm":8}}
+  });
+</script>
 
 </main>
 <!-- END OF UPDATES -->
