@@ -21,9 +21,9 @@
       "purpose": "maskable"
     },
     {
-      "src": "/logo.webp",
+      "src": "/logo.png",
       "sizes": "1152x1152",
-      "type": "image/webp",
+      "type": "image/png",
       "purpose": "any"
     },
     {

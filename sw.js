@@ -1,4 +1,4 @@
-const CACHE = "hellenicdev-v4";
+const CACHE = "hellenicdev-v5";
 const STATIC_ASSETS = [
   "/",
   "/style.min.css",
@@ -6,7 +6,7 @@ const STATIC_ASSETS = [
   "/css/theme.css",
   "/css/components.css",
   "/js/filter.js",
-  "/logo.webp",
+  "/logo.png",
   "/favicon.ico",
   "/favicon.svg",
   "/404.html",
