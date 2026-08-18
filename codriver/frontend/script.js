@@ -1,6 +1,9 @@
 // Theme
 const html = document.documentElement;
-const prefs = JSON.parse(localStorage.getItem("preferences")) || { theme: "light" };
+let prefs = { theme: "light" };
+try {
+  prefs = JSON.parse(localStorage.getItem("preferences")) || prefs;
+} catch (e) { /* corrupted storage — fall back to defaults */ }
 html.setAttribute("data-theme", prefs.theme);
 
 // DOM
@@ -14,9 +17,8 @@ const typingIndicator = document.getElementById("typingIndicator");
 const suggestions = document.getElementById("suggestions");
 
 // Constants
-const WEATHER_API_KEY = "5b72dabcdd9d4b67a75170510250304";
-const NYT_API_KEY = "N8j8mb3TSiexCbefuDeT1Ap5MgKPGwmw";
-const BACKEND_URL = "https://new-codriver.onrender.com/api/chat";
+const API_BASE = "https://new-codriver.onrender.com/api";
+const BACKEND_URL = API_BASE + "/chat";
 
 let gameActive = false;
 let secretNumber = null;
@@ -31,29 +33,39 @@ themeToggle.addEventListener("click", () => {
 });
 
 // Speech Recognition
-const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-recognition.lang = "en-US";
-recognition.interimResults = false;
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-recognition.addEventListener("start", () => {
-  micStatus.style.display = "block";
-  micBtn.style.background = "#ef476f";
-  micBtn.style.color = "white";
-});
+if (SpeechRecognition) {
+  const recognition = new SpeechRecognition();
+  recognition.lang = "en-US";
+  recognition.interimResults = false;
 
-recognition.addEventListener("end", () => {
-  micStatus.style.display = "none";
-  micBtn.style.background = "";
-  micBtn.style.color = "";
-});
+  recognition.addEventListener("start", () => {
+    micStatus.style.display = "block";
+    micBtn.style.background = "#ef476f";
+    micBtn.style.color = "white";
+  });
 
-recognition.addEventListener("result", (event) => {
-  userInput.value = event.results[0][0].transcript;
-  sendMessage();
-});
+  recognition.addEventListener("end", () => {
+    micStatus.style.display = "none";
+    micBtn.style.background = "";
+    micBtn.style.color = "";
+  });
 
-function startListening() {
-  recognition.start();
+  recognition.addEventListener("result", (event) => {
+    userInput.value = event.results[0][0].transcript;
+    sendMessage();
+  });
+
+  micBtn.addEventListener("click", () => {
+    try {
+      recognition.start();
+    } catch (e) {
+      // already listening or unsupported — ignore
+    }
+  });
+} else {
+  micBtn.style.display = "none";
 }
 
 // Typing Indicator
@@ -94,7 +106,7 @@ function addAssistantMessage(response) {
 
   const bubble = document.createElement("div");
   bubble.className = "message-bubble";
-  bubble.innerHTML = response;
+  bubble.textContent = response;
 
   const content = document.createElement("div");
   content.className = "message-content";
@@ -106,7 +118,7 @@ function addAssistantMessage(response) {
   const speakerBtn = document.createElement("button");
   speakerBtn.innerHTML = "🔊";
   speakerBtn.title = "Read aloud";
-  speakerBtn.addEventListener("click", () => speak(response.replace(/<[^>]*>/g, "")));
+  speakerBtn.addEventListener("click", () => speak(response));
   actions.appendChild(speakerBtn);
 
   content.appendChild(actions);
@@ -131,12 +143,13 @@ function speak(text) {
   window.speechSynthesis.speak(utterance);
 }
 
-// External Fetches
+// External Fetches (proxied through backend — no API keys in the browser)
 async function fetchWeather(city) {
   try {
-    const resp = await fetch(`https://api.weatherapi.com/v1/current.json?key=${WEATHER_API_KEY}&q=${city}`);
+    const resp = await fetch(`${API_BASE}/weather?city=${encodeURIComponent(city)}`);
+    if (!resp.ok) throw new Error();
     const data = await resp.json();
-    return `🌤 Weather in ${data.location.name}: ${data.current.temp_c}°C, ${data.current.condition.text}`;
+    return data.reply || "Sorry, I couldn't fetch the weather.";
   } catch {
     return "Sorry, I couldn't fetch the weather.";
   }
@@ -144,9 +157,10 @@ async function fetchWeather(city) {
 
 async function fetchNews() {
   try {
-    const resp = await fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${NYT_API_KEY}`);
+    const resp = await fetch(`${API_BASE}/news`);
+    if (!resp.ok) throw new Error();
     const data = await resp.json();
-    return data.results.slice(0, 5).map(a => `• ${a.title}`).join("<br>");
+    return data.reply || "Sorry, I couldn't fetch the top news.";
   } catch {
     return "Sorry, I couldn't fetch the top news.";
   }
@@ -287,4 +301,3 @@ userInput.addEventListener("keydown", (e) => {
 
 // Buttons
 sendBtn.addEventListener("click", sendMessage);
-micBtn.addEventListener("click", startListening);

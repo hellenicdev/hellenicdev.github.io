@@ -16,7 +16,8 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <script>
     (function() {
-      var prefs = JSON.parse(localStorage.getItem("preferences")) || { theme: "light" };
+      var prefs = { theme: "light" };
+      try { prefs = JSON.parse(localStorage.getItem("preferences")) || prefs; } catch (e) {}
       document.documentElement.setAttribute("data-theme", prefs.theme);
     })();
   </script>
@@ -83,6 +84,7 @@
     <p>&copy; 2025-2026 HellenicDev — All projects and content belong to HellenicDev.</p>
   </footer>
 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FWQFZME3Z"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}

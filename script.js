@@ -43,8 +43,7 @@ const params = new URLSearchParams(window.location.search);
 const utmSource = params.get('utm_source');
 
 if (utmSource) {
-  console.log('UTM Source:', utmSource);
-  document.cookie = `utm_source=${utmSource}; path=/; max-age=2592000; SameSite=Lax`;
+  document.cookie = `utm_source=${encodeURIComponent(utmSource)}; path=/; max-age=2592000; SameSite=Lax; Secure`;
 }
 
 
@@ -129,26 +128,6 @@ if (utmSource) {
 
 
 // =====================
-// YouTube lazy load
-// =====================
-function loadVideo(el) {
-  if (!el) return;
-  el.innerHTML = `<iframe loading="lazy"
-    src="https://www.youtube.com/embed/99FexhxsXx8?autoplay=1"
-    allowfullscreen></iframe>`;
-}
-
-
-// =====================
-// reCAPTCHA form
-// =====================
-function showForm(token) {
-  const el = document.getElementById("form-container");
-  if (el) el.style.display = "block";
-}
-
-
-// =====================
 // Popup ad (safe) — dialog with focus trap
 // =====================
 window.addEventListener("load", () => {
@@ -156,9 +135,18 @@ window.addEventListener("load", () => {
   const closeBtn = document.getElementById('popupCloseBtn');
   if (!popup || !closeBtn) return;
 
+  function setBackgroundInert(inert) {
+    const targets = document.querySelectorAll('header, main, footer, nav');
+    targets.forEach((el) => {
+      if (inert) el.setAttribute('inert', '');
+      else el.removeAttribute('inert');
+    });
+  }
+
   function openPopup() {
     popup.style.display = 'block';
     popup.setAttribute('aria-hidden', 'false');
+    setBackgroundInert(true);
     closeBtn.focus();
     popup.addEventListener('keydown', trapFocus);
   }
@@ -166,6 +154,7 @@ window.addEventListener("load", () => {
   function closePopup() {
     popup.style.display = 'none';
     popup.setAttribute('aria-hidden', 'true');
+    setBackgroundInert(false);
     popup.removeEventListener('keydown', trapFocus);
   }
 
@@ -188,7 +177,10 @@ window.addEventListener("load", () => {
 
   closeBtn.addEventListener('click', closePopup);
 
-  setTimeout(openPopup, 5000);
+  if (!sessionStorage.getItem('hd_popup_shown')) {
+    sessionStorage.setItem('hd_popup_shown', '1');
+    setTimeout(openPopup, 5000);
+  }
 });
 
 
@@ -316,7 +308,15 @@ const sideMenu = document.getElementById("sideMenu");
 if (menuButton && sideMenu) {
   function toggleMenu() {
     const isOpen = sideMenu.style.left === "0px";
-    sideMenu.style.left = isOpen ? "-250px" : "0px";
+    if (isOpen) {
+      sideMenu.style.left = "-250px";
+      setTimeout(() => {
+        sideMenu.style.visibility = "hidden";
+      }, 300);
+    } else {
+      sideMenu.style.visibility = "visible";
+      sideMenu.style.left = "0px";
+    }
     menuButton.setAttribute("aria-expanded", !isOpen);
     menuButton.classList.toggle("open", !isOpen);
   }

@@ -272,6 +272,7 @@ iframe {
   transition: left 0.3s;
   z-index: 999;
   box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+  visibility: hidden;
 }
 
 #sideMenu a {
@@ -574,6 +575,7 @@ header {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
 }
 
 .project-extra-wrapper.is-open {

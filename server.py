@@ -11,15 +11,23 @@ SECRET = os.getenv("RECAPTCHA_SECRET")
 
 @app.post("/verify-recaptcha")
 def verify_recaptcha():
-    token = request.json.get("token")
+    data = request.get_json(silent=True)
+    token = data.get("token") if data else None
     if not token:
         return jsonify({"success": False, "error": "no-token"}), 400
 
+    if not SECRET:
+        return jsonify({"success": False, "error": "not-configured"}), 500
+
     # Verify with Google
-    resp = requests.post(
-        "https://www.google.com/recaptcha/api/siteverify",
-        data={"secret": SECRET, "response": token}
-    ).json()
+    try:
+        resp = requests.post(
+            "https://www.google.com/recaptcha/api/siteverify",
+            data={"secret": SECRET, "response": token},
+            timeout=5
+        ).json()
+    except requests.RequestException:
+        return jsonify({"success": False, "error": "verify-unavailable"}), 502
 
     if resp.get("success"):
         return jsonify({"success": True})

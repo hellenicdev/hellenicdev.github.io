@@ -1,6 +1,9 @@
 (function() {
   const html = document.documentElement;
-  const prefs = JSON.parse(localStorage.getItem("preferences")) || { theme: "light" };
+  let prefs = { theme: "light" };
+  try {
+    prefs = JSON.parse(localStorage.getItem("preferences")) || prefs;
+  } catch (e) { /* corrupted storage — fall back to defaults */ }
   html.setAttribute("data-theme", prefs.theme);
 
   const toggle = document.getElementById("themeToggle");

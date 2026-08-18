@@ -1,6 +1,9 @@
 // Theme
 const html = document.documentElement;
-const prefs = JSON.parse(localStorage.getItem("preferences")) || { theme: "light" };
+let prefs = { theme: "light" };
+try {
+  prefs = JSON.parse(localStorage.getItem("preferences")) || prefs;
+} catch (e) { /* corrupted storage — fall back to defaults */ }
 html.setAttribute("data-theme", prefs.theme);
 
 document.getElementById("themeToggle").addEventListener("click", () => {
@@ -52,7 +55,11 @@ async function convert() {
     });
 
     if (!res.ok) {
-      result.textContent = "⚠️ Rate limit reached. Try again later.";
+      if (res.status === 429) {
+        result.textContent = "⚠️ Rate limit reached. Try again later.";
+      } else {
+        result.textContent = "⚠️ Conversion failed. Please try again.";
+      }
       return;
     }
 

@@ -19,6 +19,8 @@ CURRENCIES = sorted([
     if hasattr(c, "alpha_3")
 ])
 
+VALID_CURRENCIES = {code for code, _ in CURRENCIES}
+
 CURRENCY_TO_FLAG = {
     "USD": "us", "EUR": "eu", "GBP": "gb", "JPY": "jp",
     "CHF": "ch", "CAD": "ca", "AUD": "au", "CNY": "cn", "INR": "in"
@@ -34,15 +36,22 @@ EU = {
 # ======================
 RATE_CACHE = {}
 CACHE_TTL = 600  # 10 minutes
+MAX_CACHE_ENTRIES = 500
 
 REQUESTS = defaultdict(list)
 LIMIT = 30  # per IP / minute
+
+GEO_CACHE = {"time": 0.0, "currency": None}
+GEO_TTL = 86400  # 24 hours
 
 # ======================
 # HELPERS
 # ======================
 def rate_limited(ip):
     now = time.time()
+    if len(REQUESTS) > 10000:
+        for k in [k for k, v in REQUESTS.items() if not v or now - v[-1] >= 60]:
+            del REQUESTS[k]
     REQUESTS[ip] = [t for t in REQUESTS[ip] if now - t < 60]
     if len(REQUESTS[ip]) >= LIMIT:
         return True
@@ -50,14 +59,22 @@ def rate_limited(ip):
     return False
 
 def detect_currency():
+    now = time.time()
+    if GEO_CACHE["currency"] and now - GEO_CACHE["time"] < GEO_TTL:
+        return GEO_CACHE["currency"]
+    currency = "USD"
     try:
         data = requests.get("https://ipapi.co/json/", timeout=3).json()
         cc = data.get("country_code")
         if cc in EU:
-            return "EUR"
-        return data.get("currency", "USD")
-    except:
-        return "USD"
+            currency = "EUR"
+        else:
+            currency = data.get("currency", "USD")
+    except Exception:
+        pass
+    GEO_CACHE["time"] = now
+    GEO_CACHE["currency"] = currency
+    return currency
 
 def get_rate(frm, to):
     key = (frm, to)
@@ -65,6 +82,9 @@ def get_rate(frm, to):
 
     if key in RATE_CACHE and now - RATE_CACHE[key]["time"] < CACHE_TTL:
         return RATE_CACHE[key]["rate"]
+
+    if len(RATE_CACHE) > MAX_CACHE_ENTRIES:
+        RATE_CACHE.clear()
 
     r = requests.get(f"{API_URL}/{frm}/{to}", timeout=5).json()
     if r.get("result") != "success":
@@ -99,12 +119,26 @@ def convert():
     if rate_limited(ip):
         return jsonify({"error": "Too many requests"}), 429
 
-    data = request.json
-    amount = float(data["amount"])
-    frm = data["from"]
-    to = data["to"]
+    data = request.get_json(silent=True)
+    if not data:
+        return jsonify({"error": "Invalid request"}), 400
 
-    rate = get_rate(frm, to)
+    frm = data.get("from")
+    to = data.get("to")
+
+    try:
+        amount = float(data["amount"])
+    except (KeyError, TypeError, ValueError):
+        return jsonify({"error": "Invalid amount"}), 400
+
+    if frm not in VALID_CURRENCIES or to not in VALID_CURRENCIES:
+        return jsonify({"error": "Invalid currency"}), 400
+
+    try:
+        rate = get_rate(frm, to)
+    except ValueError:
+        return jsonify({"error": "Conversion unavailable"}), 502
+
     result = round(amount * rate, 2)
 
     resp = make_response(jsonify({

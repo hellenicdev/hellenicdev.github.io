@@ -16,7 +16,7 @@ Hi there! I’m HellenicDev — an independent developer from Greece who loves b
 ###🚀 Featured Project
 
 CoDriver
- – a fun AI-powered web assistant that solves math, tells jokes, gives fun facts, and (soon) reports the weather.
+ – a fun AI-powered web assistant that tells jokes, gives fun facts and riddles, reports the weather and the news, and plays a guessing game.
 
 Written in JavaScript, CSS, and HTML
 
@@ -35,7 +35,6 @@ My goal with HellenicDev is to create useful, accessible, and open-source projec
 ![GitHub streak](https://streak-stats.demolab.com/?user=hellenicdev)
 ![trophy](https://github-profile-trophy.vercel.app/?username=hellenicdev)
 ![Stars](https://img.shields.io/github/stars/hellenicdev/hellenicdev.github.io)
-![GitHub Activity Graph](https://activity-graph.herokuapp.com/graph?username=hellenicdev&theme=github)
 
 # 🌐 Connect With Me
 

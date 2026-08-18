@@ -5,7 +5,6 @@ const STATIC_ASSETS = [
   "/script.min.js",
   "/css/theme.css",
   "/css/components.css",
-  "/js/filter.js",
   "/logo.png",
   "/favicon.ico",
   "/favicon.svg",
@@ -16,9 +15,11 @@ const STATIC_ASSETS = [
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => {
-      return cache.addAll(STATIC_ASSETS);
-    })
+    caches.open(CACHE).then((cache) =>
+      Promise.all(
+        STATIC_ASSETS.map((asset) => cache.add(asset).catch(() => {}))
+      )
+    )
   );
   self.skipWaiting();
 });
@@ -50,7 +51,9 @@ self.addEventListener("fetch", (event) => {
         .then((response) => {
           if (response && response.status === 200) {
             const clone = response.clone();
-            caches.open(CACHE).then((cache) => cache.put(request, clone));
+            caches.open(CACHE)
+              .then((cache) => cache.put(request, clone))
+              .catch(() => {});
           }
           return response;
         })
@@ -65,7 +68,9 @@ self.addEventListener("fetch", (event) => {
       const fetchPromise = fetch(request).then((response) => {
         if (response && response.status === 200) {
           const clone = response.clone();
-          caches.open(CACHE).then((cache) => cache.put(request, clone));
+          caches.open(CACHE)
+            .then((cache) => cache.put(request, clone))
+            .catch(() => {});
         }
         return response;
       }).catch(() => cached);
