@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://hellenicdev.eu/sitemap.xml
+Sitemap: https://hellenicdev.eu/aletheia/sitemap.xml
