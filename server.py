@@ -4,7 +4,7 @@ import os, requests
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins=["https://hellenicdev.eu"])
 
 load_dotenv()
 SECRET = os.getenv("RECAPTCHA_SECRET")

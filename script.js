@@ -18,25 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // =====================
-// Google Analytics (delayed load)
-// =====================
-setTimeout(() => {
-  const s = document.createElement('script');
-  s.src = "https://www.googletagmanager.com/gtag/js?id=G-9FWQFZME3Z";
-  s.async = true;
-
-  s.onload = () => {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-9FWQFZME3Z');
-  };
-
-  document.head.appendChild(s);
-}, 3000);
-
-
-// =====================
 // UTM TRACKING
 // =====================
 const params = new URLSearchParams(window.location.search);

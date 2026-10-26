@@ -10,9 +10,12 @@
   <meta property="og:description" content="You are offline. Check your connection and try again.">
   <meta property="og:url" content="https://hellenicdev.eu/offline.html">
   <meta property="og:type" content="website">
-  <link rel="canonical" href="https://hellenicdev.eu/">
+  <link rel="canonical" href="https://hellenicdev.eu/offline.html">
+  <script src="https://hellenicdev.eu/js/consent-analytics.js" data-ga-id="G-9FWQFZME3Z" defer></script>
   <style>
     body{font-family:Arial,sans-serif;background:#111;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;margin:0;text-align:center;padding:20px;animation:fadeIn 1s ease-out}
+    main{display:flex;flex-direction:column;align-items:center;max-width:40rem}
+    h1{font-size:1.6rem;font-weight:700;margin:0 0 12px}
     pre{font-family:monospace;font-size:1rem;color:#38bdf8;margin-bottom:20px}
     p{font-size:1.2rem;margin-bottom:30px;max-width:500px;color:#ccc}
     .outline-button{display:inline-block;padding:12px 24px;font-family:monospace;font-size:16px;color:#38bdf8;border:2px solid #38bdf8;border-radius:6px;text-decoration:none;transition:all .3s ease}
@@ -23,6 +26,8 @@
 </head>
 <body>
   <a href="https://hellenicdev.eu/?utm_source=offline" class="skip-link" style="position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:#fff;color:#111;padding:8px 16px;border-radius:0 0 8px 8px;z-index:9999;text-decoration:none;font-weight:700">Skip to home</a>
+  <main>
+  <h1>You're offline</h1>
   <pre><strong>
    ___  __    _____  ___  _  _    ___
   / _ \/ /   |  ___|/ _ \| || |  / _ \
@@ -33,5 +38,6 @@
   </strong></pre>
   <p>You're offline. The cached version of the site may still work — try navigating back home.</p>
   <a href="https://hellenicdev.eu/?utm_source=offline" class="outline-button">Go back home</a>
+  </main>
 </body>
 </html>
