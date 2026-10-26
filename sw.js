@@ -1,11 +1,14 @@
-const CACHE = "hellenicdev-v5";
+const CACHE = "hellenicdev-v6";
 const STATIC_ASSETS = [
   "/",
   "/style.min.css",
   "/script.min.js",
+  "/js/consent-analytics.js",
   "/css/theme.css",
   "/css/components.css",
-  "/logo.png",
+  "/logo-300.webp",
+  "/logo-300.png",
+  "/apple-touch-icon.png",
   "/favicon.ico",
   "/favicon.svg",
   "/404.html",

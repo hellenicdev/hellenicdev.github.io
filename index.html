@@ -14,9 +14,10 @@
 <meta name="googlebot" content="index, follow">
 <meta property="og:title" content="HellenicDev">
 <meta property="og:description" content="Programming projects, tools, and AI apps by HellenicDev.">
-<meta property="og:image" content="https://hellenicdev.eu/logo.png">
-<meta property="og:image:width" content="1152">
-<meta property="og:image:height" content="1152">
+<meta property="og:image" content="https://hellenicdev.eu/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://hellenicdev.eu">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="HellenicDev">
@@ -24,15 +25,15 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="HellenicDev">
 <meta name="twitter:description" content="Programming projects, tools, and AI apps by HellenicDev.">
-<meta name="twitter:image" content="https://hellenicdev.eu/logo.png">
+<meta name="twitter:image" content="https://hellenicdev.eu/og-image.png">
 <meta name="twitter:site" content="@hellenicdev">
 <meta name="twitter:creator" content="@hellenicdev">
-<link rel="icon" type="image/png" href="/logo.png">
-<link rel="apple-touch-icon" href="/logo.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="https://hellenicdev.eu">
-<link rel="preload" as="image" href="/logo.png" fetchpriority="high">
-<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preload" as="image" href="/logo-300.webp" type="image/webp" fetchpriority="high">
 <link rel="preconnect" href="https://cdn.supportfast.ai">
 <link rel="preconnect" href="https://www.youtube.com">
 <link rel="preconnect" href="https://assets.mailerlite.com">
@@ -53,7 +54,7 @@
   "name": "HellenicDev",
   "givenName": "Panos",
   "url": "https://hellenicdev.eu",
-  "image": "https://hellenicdev.eu/logo.png",
+  "image": "https://hellenicdev.eu/logo-300.png",
   "sameAs": [
     "https://github.com/hellenicdev",
     "https://youtube.com/@hellenicdev",
@@ -168,6 +169,7 @@
 </script>
 
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="06e4a97f-2c34-41ed-8ab6-d53b581ff080" type="text/javascript" async></script>
+<script src="https://hellenicdev.eu/js/consent-analytics.js" data-ga-id="G-9FWQFZME3Z" defer></script>
 
 <title>HellenicDev – Programming Projects, Tools & Experiments</title>
 
@@ -204,10 +206,10 @@ iframe{display:block;width:100%;max-width:100%}
 @media(max-width:768px){body{padding:1rem}h1{font-size:2rem}h2{font-size:1.5rem}#menuButton{font-size:18px;padding:3px 6px}#sideMenu{width:200px;padding-top:50px}.game-list{grid-template-columns:1fr;gap:1rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
-<link rel="stylesheet" href="/style.min.css" media="print" onload="this.media='all';this.onload=null">
+<link rel="stylesheet" href="/style.min.css">
 <link rel="stylesheet" href="/css/theme.css" media="print" onload="this.media='all';this.onload=null">
 <link rel="stylesheet" href="/css/components.css" media="print" onload="this.media='all';this.onload=null">
-<noscript><link rel="stylesheet" href="/style.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="stylesheet" href="/css/components.css"></noscript>
+<noscript><link rel="stylesheet" href="/css/theme.css"><link rel="stylesheet" href="/css/components.css"></noscript>
 
 </head>
 <body>
@@ -231,15 +233,18 @@ iframe{display:block;width:100%;max-width:100%}
 
 
 <header>
-<img
-  src="logo.png"
-  width="150"
-  height="150"
-  class="logo"
-  alt="HellenicDev logo"
-  fetchpriority="high"
-  decoding="async"
->
+<picture>
+  <source srcset="/logo-300.webp" type="image/webp">
+  <img
+    src="/logo-300.png"
+    width="150"
+    height="150"
+    class="logo"
+    alt="HellenicDev logo"
+    fetchpriority="high"
+    decoding="async"
+  >
+</picture>
 
 <!-- ANNIVERSARY -->
 <p id="hidden-thanks" class="hidden-thanks">

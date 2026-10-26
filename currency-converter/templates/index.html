@@ -9,11 +9,14 @@
   <meta name="theme-color" content="#19336e"/>
   <meta property="og:title" content="HellenicDev">
   <meta property="og:description" content="Programming projects, experiments, and tools by HellenicDev.">
-  <meta property="og:image" content="https://hellenicdev.eu/logo.png">
-  <meta property="og:url" content="https://hellenicdev.eu">
+  <meta property="og:image" content="https://hellenicdev.eu/og-image.png">
+  <meta property="og:url" content="https://currency-converter-7fmk.onrender.com/">
+  <link rel="canonical" href="https://currency-converter-7fmk.onrender.com/">
   <meta property="og:type" content="website">
   <title>Currency Converter</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="06e4a97f-2c34-41ed-8ab6-d53b581ff080" type="text/javascript" async></script>
+  <script src="https://hellenicdev.eu/js/consent-analytics.js" data-ga-id="G-9FWQFZME3Z" defer></script>
   <script>
     (function() {
       var prefs = { theme: "light" };
@@ -26,7 +29,10 @@
 
   <header class="app-header">
     <a href="/" class="logo-link" aria-label="Back to homepage">
-      <img src="https://hellenicdev.eu/logo.png" alt="HellenicDev Logo" class="site-logo">
+      <picture>
+        <source srcset="https://hellenicdev.eu/logo-300.webp" type="image/webp">
+        <img src="https://hellenicdev.eu/logo-300.png" alt="HellenicDev Logo" class="site-logo" width="40" height="40">
+      </picture>
     </a>
     <h1 class="app-title">Currency Converter</h1>
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -84,13 +90,6 @@
     <p>&copy; 2025-2026 HellenicDev — All projects and content belong to HellenicDev.</p>
   </footer>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FWQFZME3Z"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9FWQFZME3Z');
-  </script>
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
