@@ -1,55 +1,60 @@
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=19336e&center=true&vCenter=true&multiline=true&repeat=true&width=800&height=100&lines=HellenicDev+%20+%2D+%20+Building+%2C+%20+Dreaming%2C+%20+Leveling+%20+Up)](https://git.io/typing-svg)
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/S6S31XB030)
+# HellenicDev — Portfolio website
 
-Hi there! I’m HellenicDev — an independent developer from Greece who loves building open-source projects, experimenting with web technologies, and turning creative ideas into working software.
+[![Website](https://img.shields.io/badge/website-hellenicdev.eu-19336e?style=flat-square)](https://hellenicdev.eu) [![License: BSD 3-Clause](https://img.shields.io/badge/license-BSD%203--Clause-blue?style=flat-square)](LICENSE) [![Deploy](https://github.com/hellenicdev/hellenicdev.github.io/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/hellenicdev/hellenicdev.github.io/actions/workflows/deploy-pages.yml)
 
-##💡 **What I Do**
+The source of **[hellenicdev.eu](https://hellenicdev.eu)**: the home of HellenicDev, an independent developer from Greece building open-source web apps, browser games and small AI tools.
 
-🧠 Develop interactive web apps with HTML, CSS, and JavaScript
+## What's on the site
 
-🕹️ Create games and experiments for browsers
+- **Projects**: a grid of every live project (games, tools and AI apps), each linking to its own page under `hellenicdev.eu/<project>`
+- **Codriver**: an AI web assistant with jokes, riddles, weather, news and a guessing game (`codriver/`)
+- **Currency converter**: a small Flask app (`currency-converter/`)
+- AI support agent, contact links, newsletter sign-up and the Substack feed
+- Installable PWA with an offline page (`sw.js`, `offline.html`)
+- Consent-gated analytics: Google Analytics only loads after Cookiebot consent (`js/consent-analytics.js`, shared by every project page)
 
-🤖 Build small AI-powered tools and assistants
+## Structure
 
-🧰 Explore new frameworks, APIs, and developer tools
+| Path | What it is |
+| --- | --- |
+| `index.html`, `style.min.css`, `script.min.js` | The home page (edit `style.css` / `script.js`, then re-minify) |
+| `css/`, `js/` | Shared theme, components and scripts used by Codriver and the currency converter, plus the consent-gated analytics snippet |
+| `404.html`, `offline.html`, `privacy-policy.html` | Error, offline and privacy pages |
+| `codriver/` | Codriver front end and its Python back end |
+| `currency-converter/` | Flask currency converter |
+| `server.py`, `render.yaml` | Small Python back end deployed on Render |
+| `netlify/`, `netlify.toml` | Netlify functions and security headers |
+| `sitemap.xml`, `robots.txt`, `manifest.json` | SEO and PWA files |
 
-###🚀 Featured Project
+## Run locally
 
-CoDriver
- – a fun AI-powered web assistant that tells jokes, gives fun facts and riddles, reports the weather and the news, and plays a guessing game.
+```sh
+git clone https://github.com/hellenicdev/hellenicdev.github.io.git
+cd hellenicdev.github.io
+python3 -m http.server 8000
+```
 
-Written in JavaScript, CSS, and HTML
+Then open <http://localhost:8000>. The back ends (`server.py`, `codriver/backend`, `currency-converter`) are optional and have their own `requirements.txt`.
 
-Simple, fast, and designed for browsers
+## Deployment
 
-Continuously evolving — new features added regularly
+Every push to `main` deploys to GitHub Pages through [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml). The custom domain is `hellenicdev.eu`.
 
-###🌍 Mission
+## Tech
 
-My goal with HellenicDev is to create useful, accessible, and open-source projects that help others learn and have fun. Every repo is an opportunity to experiment, share, and grow.
+- HTML5, CSS3 and vanilla JavaScript (no framework)
+- Service worker for offline support
+- Python (Flask / Gunicorn) for the small back ends
+- GitHub Pages, Render and Netlify
 
-# My GitHub Stats
+## License
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=hellenicdev&show_icons=true)
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=hellenicdev&layout=compact)
-![GitHub streak](https://streak-stats.demolab.com/?user=hellenicdev)
-![trophy](https://github-profile-trophy.vercel.app/?username=hellenicdev)
-![Stars](https://img.shields.io/github/stars/hellenicdev/hellenicdev.github.io)
+BSD 3-Clause. See [LICENSE](LICENSE).
 
-# 🌐 Connect With Me
+## Credits
 
-[![Mail](https://img.shields.io/badge/-Mail-D44638?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ikonpanos@gmail.com)
-[![YouTube](https://img.shields.io/badge/-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@hellenicdev?sub_confirmation=1)
-[![GitHub](https://img.shields.io/badge/-GitHub-333333?style=for-the-badge&logo=github&logoColor=white)](https://github.com/hellenicdev)
-[![Discord](https://img.shields.io/badge/-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/tHwtmrB9xw)
-[![Reddit](https://img.shields.io/badge/-Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white)](https://reddit.com/u/hellenicdev)
-[![Viber](https://img.shields.io/badge/-Viber-7360F2?style=for-the-badge&logo=viber&logoColor=white)](https://invite.viber.com/?g2=AQAgg8gST0QlllYfwbe6OjAd1xzo4ezOXxCHX4yh03u0ZSgOXVJksWXm59E6Phz2)
+Made by [HellenicDev](https://hellenicdev.eu) (Panos).
 
-# 🛠️ Tech Stack
-
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+- [YouTube](https://www.youtube.com/@hellenicdev) · [Discord](https://discord.gg/tHwtmrB9xw) · [Reddit](https://reddit.com/u/hellenicdev) · [Substack](https://hellenicdev.substack.com) · [Email](mailto:ikonpanos@gmail.com)
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/S6S31XB030)
