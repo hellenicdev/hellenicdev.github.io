@@ -168,7 +168,7 @@
 }]
 </script>
 
-<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="06e4a97f-2c34-41ed-8ab6-d53b581ff080" type="text/javascript" async></script>
+<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="06e4a97f-2c34-41ed-8ab6-d53b581ff080" async></script>
 <script src="https://hellenicdev.eu/js/consent-analytics.js" data-ga-id="G-9FWQFZME3Z" defer></script>
 
 <title>HellenicDev – Programming Projects, Tools & Experiments</title>
@@ -216,7 +216,7 @@ iframe{display:block;width:100%;max-width:100%}
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<button id="menuButton" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="sideMenu">➜</button>
+<button type="button" id="menuButton" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="sideMenu">➜</button>
 
 <nav id="sideMenu" aria-label="Main navigation">
   <a href="#about">About Me</a>
@@ -478,13 +478,6 @@ Here's to learning, building, and innovating — together. 🚀</p>
       </a>
     </div>
 
-    <div class="game-card project-extra">
-      <span class="new-tag">COMING SOON!</span>
-      <div>
-        <h3>AI Analyser</h3>
-        <p><i>More details coming soon...</i></p>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -500,7 +493,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
 <div id="ai-agent" class="responsive-iframe">
 <h2 class="left-align"> NEW! AI-powered agent </h2>
 <div class="responsive-iframe">
-  <iframe loading="lazy" title="AI Agent" src="https://app.supportfast.ai/chatbot-iframe/bot-09dcew6lcq" width="100%" height="600px"></iframe>
+  <iframe loading="lazy" title="AI Agent" src="https://app.supportfast.ai/chatbot-iframe/bot-09dcew6lcq" style="width:100%;height:600px;border:0"></iframe>
   </div>
   </div>
 <br><br>
@@ -535,9 +528,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
 	  loading="lazy"
 	  title="Website Building Help form"
       src="https://docs.google.com/forms/d/e/1FAIpQLSemiAokTJcTqz4syWyLyt1H7GWj-LJSkmVt4au51hGNwBMo8Q/viewform?embedded=true"
-      width="100%"
-      height="800"
-      frameborder="0">
+      style="width:100%;height:800px;border:0">
       Loading…
     </iframe>
   </div>
@@ -566,7 +557,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     </a>
 	<br><br>
   </div>
-   <iframe src="https://hellenicdev.substack.com/embed" width="480" height="320" class="contact-substack" title="Subscribe on Substack" frameborder="0" scrolling="no" loading="lazy"></iframe>
+   <iframe src="https://hellenicdev.substack.com/embed" width="480" height="320" class="contact-substack" title="Subscribe on Substack" style="border:0;overflow:hidden" loading="lazy"></iframe>
 </div>
 
   <!-- Popup Ad -->
@@ -574,7 +565,7 @@ Here's to learning, building, and innovating — together. 🚀</p>
     <strong>Sponsored Offer - Accommodation in Corfu, Greece.</strong>
     <p>Nikoletta's Apartments. 9.6 Booking rating. Situated in Tzavros, Nikoleta's Corfu Apartment belongs to a block of houses which feature a large outdoor pool and a colorful garden full of flowers and trees. Set in a 8,000 m² area, the property offers fully equipped apartments with free WiFi access and shaded verandas overlooking the pool.</p>
     <a href="https://www.booking.com/Share-BN5noZ?utm_source=hellenicdev.eu" target="_blank" rel="noopener sponsored" class="link">Check it out →</a>
-    <button class="popup-ad-1" id="popupCloseBtn" aria-label="Close dialog">&times;</button>
+    <button type="button" class="popup-ad-1" id="popupCloseBtn" aria-label="Close dialog">&times;</button>
   </div>
 
 <div id="newsletter" class="content-visibility-auto">
@@ -805,6 +796,9 @@ Here's to learning, building, and innovating — together. 🚀</p>
         toggleButton.setAttribute('aria-expanded', 'true');
 
         setTimeout(function() {
+          // Let the grid grow freely after opening so rotating the phone
+          // or resizing the window can't clip cards.
+          if (wrapper.classList.contains('is-open')) wrapper.style.maxHeight = 'none';
           isAnimating = false;
         }, 400);
       } else {
@@ -812,6 +806,10 @@ Here's to learning, building, and innovating — together. 🚀</p>
           card.style.transitionDelay = (index * staggerTime) + 'ms';
           card.classList.remove('is-visible');
         });
+
+        // Start the collapse from the real height (it may be 'none' after opening).
+        wrapper.style.maxHeight = wrapper.scrollHeight + 'px';
+        void wrapper.offsetHeight;
 
         setTimeout(function() {
           wrapper.style.maxHeight = '0';
